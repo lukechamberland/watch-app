@@ -2,6 +2,19 @@
   text-align: center;
 }
 
+.inner-div {
+  background-color: #333;
+  position: fixed;
+  top: 20px;
+  left: 0;
+  width: 200px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  color: white;
+}
+
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
   height: 40vmin;
