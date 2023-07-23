@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import classnames from 'classnames'
 import axios from 'axios';
 import './App.css';
-import { createRoot } from 'react-dom/client';
-import { Auth0Provider } from '@auth0/auth0-react';
 import Nav from './components/Navigation'
 
 function App() {
