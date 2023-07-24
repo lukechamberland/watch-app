@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
+import myImage from '../images/images-2.jpg';
 
 function Product() {
   const [data, setData] = useState([])
@@ -14,11 +15,15 @@ function Product() {
   }, []);
 
   return (
-    <div>
+    <div class="products">
       {data.map((product) => (
         <div>
-          <h1>{product.name}</h1>
-          <h1>Price: {product.price}</h1>
+          <div class="product">
+            <h1>{product.name}</h1>
+          </div>
+          <div class="price-div">
+            <h1 class="price"> ${product.price}</h1>
+          </div>
         </div>
       ))}
     </div>
