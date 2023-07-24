@@ -1,15 +1,28 @@
 import React from 'react';
 import axios from 'axios';
+import { useState, useEffect } from 'react';
 
 function Product() {
-    axios.get('localhost:8080/api/products')
-    .then((response) => {
-      return (<div>{response[0].price}</div>)
+  const [data, setData] = useState([])
+
+  useEffect(() => {
+    axios.get('/api/products')
+    .then((result) => {
+      console.log(result);
+      setData(result.data);
     })
-    .catch((err) => {
-      console.log(err)
-    })
-  
+  }, []);
+
+  return (
+    <div>
+      {data.map((product) => (
+        <div>
+          <h1>{product.name}</h1>
+          <h1>Price: {product.price}</h1>
+        </div>
+      ))}
+    </div>
+  )
 }
 
 export default Product;

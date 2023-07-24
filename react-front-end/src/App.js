@@ -12,7 +12,7 @@ import Product from './components/Product';
 
 function App() {
     const { isAuthenticated, loginWithRedirect, logout, user } = useAuth0();
-    console.log(user)
+    // console.log(user)
     if (isAuthenticated) {
       // Render content for authenticated users
       return (
