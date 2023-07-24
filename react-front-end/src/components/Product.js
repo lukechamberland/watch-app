@@ -1,7 +1,6 @@
 import React from 'react';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
-import myImage from '../images/images-2.jpg';
 
 function Product() {
   const [data, setData] = useState([])
