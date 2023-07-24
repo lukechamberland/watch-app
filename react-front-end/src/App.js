@@ -11,6 +11,7 @@ import { useEffect, useState, createContext, useContext } from "react";
 import Nav from './components/Navigation'
 import Product from './components/Product';
 import Logout from './components/Logout';
+import Login from "./components/Login";
 
 const userContext = createContext();
 

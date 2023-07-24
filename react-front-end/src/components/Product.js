@@ -17,12 +17,13 @@ function Product() {
   return (
     <div class="products">
       {data.map((product) => (
-        <div>
+        <div class="product-wrapper">
           <div class="product">
-            <h1>{product.name}</h1>
           </div>
+          <div class="product-details"></div>
+          <div class="product-name">{product.name}</div>
           <div class="price-div">
-            <h1 class="price"> ${product.price}</h1>
+            <h1 class="price"> ${product.price}.00</h1>
           </div>
         </div>
       ))}
