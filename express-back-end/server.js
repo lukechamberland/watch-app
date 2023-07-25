@@ -25,6 +25,7 @@ app.get('/api/data', (req, res) => res.json({
 
 app.get('/api/products', (req, res) => {
   getFromProducts().then((result) => {
+    
     res.json(result);
   })
   .catch((error) => {
