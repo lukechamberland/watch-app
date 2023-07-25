@@ -74,7 +74,7 @@
 }
 
 .product:hover {
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
 }
 
 .price {
@@ -107,7 +107,7 @@
 }
 
 .product-details-image {
-  margin-left: 200px;
+  margin-left: 100px;
   border-radius: 10px;
   background-image: url('images/silver-watch.jpg');
   background-size: cover;
@@ -124,12 +124,12 @@
 }
 
 .about {
-  flex: 0 0 425px;
   padding: 10px;
   margin-left: 100px;
   margin-top: 50px;
   margin-right: 100px;
   height: 450px;
+  width: 450px;
 }
 
 .PDname {
@@ -141,10 +141,12 @@
   margin-top: 50px;
   font-size: 20px;
   font-weight: 125;
+  border-bottom: 2px solid black;
+  padding-bottom: 40px;
 }
 
 .PDprice {
-  margin-top: 150px;
+  margin-top: 15px;
   font-size: 30px;
   font-weight: 250;
 }
@@ -153,7 +155,6 @@
   display: flex;
   flex-direction: column;
   text-align: center;
-  margin-right: 350px;
   margin-top: 50px;
 }
 
@@ -169,5 +170,62 @@
 }
 
 .PDfavourite {
-  color: red;
+  margin-top: 15px;
+  font-size: 30px;
+}
+
+.contents {
+  display: flex;
+  justify-content: space-between;
+}
+
+.PDprice-div {
+  display: flex;
+  flex-direction: column;
+}
+
+.PDprice-text {
+  font-size: 20px;
+  font-weight: 150;
+  margin-top: 50px;
+}
+
+.PDfavourite-div {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.PDfavourite-text {
+  font-size: 20px;
+  font-weight: 150;
+  margin-top: 50px;
+}
+
+.in-stock {
+  font-size: 30px;
+  font-weight: 150;
+  margin-top: 25px
+}
+
+.PDinventory {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 100px;
+}
+
+.add-to-cart {
+  color: rgb(0, 0, 0);
+  margin-top: 10px;
+  height: 50px;
+  width: 150px;
+  font-size: 20px;
+  font-weight: 100;
+  border: 0px;
+  border-radius: 10px;
+  transition: background-color 0.5s ease;
+}
+
+.add-to-cart:hover {
+  background-color: rgb(186, 186, 186);
 }

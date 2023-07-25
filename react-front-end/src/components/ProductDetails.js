@@ -3,7 +3,7 @@ import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import '../App.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faThumbsUp, faCommentAlt, faHeart, faCheck, faXmark, } from './icons';
+import { faHeart, faCheck, faXmark, } from './icons';
 
 function ProductDetails() {
 
@@ -13,26 +13,26 @@ function ProductDetails() {
 
   useEffect(() => {
     axios.get('/api/products')
-    .then((result) => {
-      const data = result.data;
-      const correctProduct = data.find((product) => product.id === Number(id))
-      setProductDetailsState(correctProduct);
-    });
+      .then((result) => {
+        const data = result.data;
+        const correctProduct = data.find((product) => product.id === Number(id))
+        setProductDetailsState(correctProduct);
+      });
   }, []);
 
-  const isAvailable = function() {
+  const isAvailable = function () {
     if (productDetailsState.available) {
       return (
-        <FontAwesomeIcon icon={faCheck}/>
+        <FontAwesomeIcon icon={faCheck} />
       )
     } else {
       return (
-        <FontAwesomeIcon icon={faXmark}/>
+        <FontAwesomeIcon icon={faXmark} />
       )
     }
   }
 
-  const isFavourite = function() {
+  const isFavourite = function () {
     if (productDetailsState.favourite) {
       return (
         <FontAwesomeIcon icon={faHeart} />
@@ -44,8 +44,16 @@ function ProductDetails() {
     }
   }
 
+  const toGst = function() {
+    return (productDetailsState.price * 1.05).toFixed(2);
+  }
+
   const style = {
     color: productDetailsState.available ? 'rgb(0, 201, 0)' : 'red'
+  }
+
+ let styleHeart = {
+    color: productDetailsState.favourite ? 'red' : 'rgb(203, 203, 203)'
   }
 
   return (
@@ -54,11 +62,20 @@ function ProductDetails() {
       <div class="about">
         <div class="PDname">{productDetailsState.name}</div>
         <div class="PDdescription">{productDetailsState.description}</div>
-        <div class="PDprice">${productDetailsState.price}.00</div>
-        <div class="PDavailable">
-          <div class="PDavailable-text">available:</div> <div class="check" style={style}>{isAvailable()}</div>
+        <div class="contents">
+          <div class="PDprice-div">
+            <div class="PDprice-text">Price: ${productDetailsState.price} + GST</div> <div class="PDprice">${toGst()}</div>
+          </div>
+          <div class="PDavailable">
+            <div class="PDavailable-text">Available:</div> <div class="check" style={style}>{isAvailable()}</div>
+          </div>
+          <div class="PDfavourite-div">
+            <div class="PDfavourite-text">Favourite:</div> <div class="PDfavourite" style={styleHeart}>{isFavourite()}</div>
+          </div>
         </div>
-        <div class="PDfavourite">{isFavourite()}</div>
+        <div class="PDinventory">
+          <div class="in-stock">{productDetailsState.inventory} in stock</div> <button class="add-to-cart">Add to cart</button>
+        </div>
       </div>
     </div>
   )
