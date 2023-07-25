@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom'
 
 function Product() {
   const [data, setData] = useState([])
@@ -13,11 +14,17 @@ function Product() {
     })
   }, []);
 
+  const navigate = useNavigate();
+
+  const handleClick = (id) => {
+    navigate(`/product/${id}`);
+  }
+
   return (
     <div class="products">
       {data.map((product) => (
         <div class="product-wrapper">
-          <div class="product"></div>
+          <div class="product" onClick={() => handleClick(product.id)}></div>
             <div class="product-details"></div>
             <div class="product-name">{product.name}</div>
             <div class="price-div">
