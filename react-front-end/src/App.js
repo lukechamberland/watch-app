@@ -2,10 +2,7 @@ import React, { Component } from 'react';
 import classnames from 'classnames'
 import axios from 'axios';
 import './App.css';
-<<<<<<< HEAD
 import { useAuth0 } from '@auth0/auth0-react';
-=======
->>>>>>> f2d1724a434ae8557b80900f664f6d091ef9d676
 import Nav from './components/Navigation'
 
 function App() {
