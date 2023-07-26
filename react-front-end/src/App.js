@@ -2,17 +2,32 @@ import React, { Component } from 'react';
 import classnames from 'classnames'
 import axios from 'axios';
 import './App.css';
-import { createRoot } from 'react-dom/client';
-import { Auth0Provider } from '@auth0/auth0-react';
+import { useAuth0 } from '@auth0/auth0-react';
 import Nav from './components/Navigation'
 
 function App() {
-  return (
-    <Nav />
-  )
+    const { isAuthenticated, loginWithRedirect, logout, user } = useAuth0();
+  
+    if (isAuthenticated) {
+      // Render content for authenticated users
+      return (
+        <div>
+          <h1>Hello, {user.name}</h1>
+          <button onClick={() => logout()}>Logout</button>
+        </div>
+      );
+    } else {
+      // Render content for non-authenticated users
+      return (
+        <div>
+          <h1>Welcome! Please log in.</h1>
+          <button onClick={() => loginWithRedirect()}>Login</button>
+        </div>
+      );
+    }
 }
-
-export default App;
+  
+  export default App;
 
 /* 
 
