@@ -43,9 +43,4 @@ const getFromProducts = function() {
   });
 };
 
-addToProducts(1, 1, 'https://example.com/images/watch1.jpg', 'Classic black leather watch', 'Leather Strap Watch', 100.00, true, 10, true);
-addToProducts(2, 2, 'https://example.com/images/watch2.jpg', 'Elegant stainless steel watch', 'Stainless Steel Watch', 120.00, false, 8, true);
-addToProducts(3, 3, 'https://example.com/images/watch3.jpg', 'Sports chronograph watch', 'Chronograph Sports Watch', 80.00, true, 15, true);
-
-
 module.exports = { addToProducts, getFromProducts };
