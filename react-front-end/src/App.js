@@ -18,8 +18,7 @@ import ToggleNav from "./components/ToggleNav";
 import Slideshow from "./components/Slideshow";
 import ProductDetails from "./components/ProductDetails";
 import NewProduct from "./components/NewProduct";
-
-const userContext = createContext();
+import Cart from "./components/Cart";
 
 function App() {
   const { isAuthenticated, loginWithRedirect, logout, user } = useAuth0();
@@ -57,24 +56,25 @@ function App() {
   if (isAuthenticated) {
     // Render content for authenticated users
     return (
-      <BrowserRouter>
-        <div>
-          <Routes>
-            <Route
-              exact
-              path="/"
-              element={
-                <div>
-                  <Logout />
-                  <Product />
-                </div>
-              }
-            />
-            <Route path="/product/:id" element={<ProductDetails />} />
-            <Route path="/newproduct" element={<NewProduct />} />
-          </Routes>
-        </div>
-      </BrowserRouter>
+        <BrowserRouter>
+          <div>
+            <Routes>
+              <Route
+                exact
+                path="/"
+                element={
+                  <div>
+                    <Logout />
+                    <Product />
+                  </div>
+                }
+              />
+              <Route path="/product/:id" element={<ProductDetails />} />
+              <Route path="/newproduct" element={<NewProduct />} />
+              <Route path="/cart" element={<Cart />} />
+            </Routes>
+          </div>
+        </BrowserRouter>
     );
   } else {
     // Render content for non-authenticated users

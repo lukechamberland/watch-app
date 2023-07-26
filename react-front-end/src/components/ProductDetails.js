@@ -5,6 +5,8 @@ import '../App.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart, faCheck, faXmark, } from './icons';
 
+const cart = [];
+
 function ProductDetails() {
 
   const { id } = useParams();
@@ -48,6 +50,15 @@ function ProductDetails() {
     return (productDetailsState.price * 1.05).toFixed(2);
   }
 
+  const addToLocalStorage = function() {
+    localStorage.setItem("cartProducts", JSON.stringify(cart));
+  }
+
+  const addToCart = function() {
+    cart.push(productDetailsState)
+    addToLocalStorage()
+  }
+
   const style = {
     color: productDetailsState.available ? 'rgb(0, 201, 0)' : 'red'
   }
@@ -74,7 +85,7 @@ function ProductDetails() {
           </div>
         </div>
         <div class="PDinventory">
-          <div class="in-stock">{productDetailsState.inventory} in stock</div> <button class="add-to-cart">Add to cart</button>
+          <div class="in-stock">{productDetailsState.inventory} in stock</div> <button class="add-to-cart" onClick={() => addToCart()}>Add to cart</button>
         </div>
       </div>
     </div>
