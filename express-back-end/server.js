@@ -1,19 +1,28 @@
-const Express = require('express');
-const App = Express();
-const BodyParser = require('body-parser');
+const express = require('express');
+const bodyParser = require('body-parser');
+const { addToProducts, getFromProducts } = require('../react-front-end/src/helpers');
+
+const app = express();
 const PORT = 8080;
 
 // Express Configuration
-App.use(BodyParser.urlencoded({ extended: false }));
-App.use(BodyParser.json());
-App.use(Express.static('public'));
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+app.use(express.static('public'));
 
 // Sample GET route
-App.get('/api/data', (req, res) => res.json({
+app.get('/api/data', (req, res) => res.json({
   message: "Seems to work!",
 }));
 
-App.listen(PORT, () => {
-  // eslint-disable-next-line no-console
-  console.log(`Express seems to be listening on port ${PORT} so that's pretty good 👍`);
+app.get('/api/products', (req, res) => {
+  getFromProducts().then((result) => {
+    res.json(result);
+  }).catch((error) => {
+    res.status(500).json({ error: 'Internal Server Error' });
+  });
+});
+
+app.listen(PORT, () => {
+  console.log(`Express is listening on port ${PORT}`);
 });
