@@ -98,7 +98,8 @@ function ProductDetails() {
 
   return (
     <div class="product-details-page">
-      <div class="product-details-image"></div>
+      {/* <div class="product-details-image"></div> */}
+      <img src={productDetailsState.image_url}/>
       <div class="about">
         <div class="PDname">{productDetailsState.name}</div>
         <div class="PDdescription">{productDetailsState.description}</div>
