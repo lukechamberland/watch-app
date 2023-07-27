@@ -78,6 +78,13 @@ export default function ProfileTabs() {
     setFavourites(JSON.parse(localStorage.getItem("favourites")))
     }, []);
 
+    const deleteFavourite = function(pdc) {
+      const data = JSON.parse(localStorage.getItem("favourites"));
+      const correctArr = data.filter((otherPdc) => otherPdc.id !== pdc.id);
+      localStorage.setItem("favourites", JSON.stringify(correctArr));
+      window.location.reload();
+    }
+
     const userFavourites = function() {
       const favouriteList = favourites.map((favourite, idx) => 
         <div class="products" key={favourite.name + favourite.price + idx}>
@@ -87,6 +94,7 @@ export default function ProfileTabs() {
             <div class="product-name">{favourite.name}</div>
             <div class="price-div">
               <h1 class="price"> ${favourite.price}.00</h1>
+              <button class="favourite-delete-button" onClick={() => deleteFavourite(favourite)}>Delete</button>
             </div>
             <div class="PDinventory">
               <div class="in-stock">{favourite.inventory} in stock</div> <button class="add-to-cart" >Add to cart</button>

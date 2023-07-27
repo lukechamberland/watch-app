@@ -414,3 +414,16 @@ label {
 .checkout-button:hover {
   background-color: rgb(186, 186, 186);
 }
+
+.favourite-delete-button {
+  margin-left: 10px;
+  border: none;
+  border-radius: 5px;
+  height: 30px;
+  width: 60px;
+  transition: background-color 0.5s ease;
+}
+
+.favourite-delete-button:hover {
+  background-color: rgb(144, 144, 144);
+}
