@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const { addToProducts, getFromProducts } = require('../react-front-end/src/helpers');
+const { addToProducts, getFromProducts, addToOrderProducts, getFromOrderProducts, addToOrders, getFromOrders, getFromUsers } = require('./helpers');
+const cors = require('cors');
 
 const app = express();
 const PORT = 8080;
@@ -9,6 +10,7 @@ const PORT = 8080;
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(express.static('public'));
+app.use(cors());
 
 // Sample GET route
 app.get('/api/data', (req, res) => res.json({
@@ -18,7 +20,35 @@ app.get('/api/data', (req, res) => res.json({
 app.get('/api/products', (req, res) => {
   getFromProducts().then((result) => {
     res.json(result);
-  }).catch((error) => {
+  })
+  .catch((error) => {
+    res.status(500).json({ error: 'Internal Server Error' });
+  });
+});
+
+app.get('/api/order_products', (req, res) => {
+  getFromOrderProducts().then((result) => {
+    res.json(result);
+  })
+  .catch((error) => {
+    res.status(500).json({ error: 'Internal Server Error' });
+  });
+});
+
+app.get('/api/orders', (req, res) => {
+  getFromOrders().then((result) => {
+    res.json(result);
+  })
+  .catch((error) => {
+    res.status(500).json({ error: 'Internal Server Error' });
+  });
+});
+
+app.get('/api/users', (req, res) => {
+  getFromUsers().then((result) => {
+    res.json(result);
+  })
+  .catch((error) => {
     res.status(500).json({ error: 'Internal Server Error' });
   });
 });
