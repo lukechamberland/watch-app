@@ -4,10 +4,23 @@ import axios from 'axios';
 import './App.css';
 import { useAuth0 } from '@auth0/auth0-react';
 import Nav from './components/Navigation'
+import { useEffect } from 'react/cjs/react.production.min';
 
 function App() {
     const { isAuthenticated, loginWithRedirect, logout, user } = useAuth0();
-  
+    useEffect (() => {
+        //make a request to a back end route TBD
+        //send over entire user object
+        //backend query user object
+        //if match found send data to front end
+        //set as primary logged in user
+        //if not register user
+        //login_auth = sub
+        //backend will send frontend userid, existing or new 
+        //save userid info in a useContext
+        //second option windows.sessionStorage
+    }, [isAuthenticated])
+    console.log(user)
     if (isAuthenticated) {
       // Render content for authenticated users
       return (
