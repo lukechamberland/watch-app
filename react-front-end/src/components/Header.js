@@ -1,10 +1,21 @@
 import React from 'react';
+import cartIcon from '../images/cart.png';
+import profileIcon from '../images/profile.png';
+import { Link } from 'react-router-dom';
+import { useAuth0 } from "@auth0/auth0-react";
 
 const Header = (props) => {
+  const { isAuthenticated, loginWithRedirect, user, logout } = useAuth0();
+
+  const userLogout = () => {
+    window.sessionStorage.removeItem("userId");
+    logout();
+  };
+
   return (
     <header style={styles.header}>
       <div style={styles.left}>
-        <button style={styles.menuButton} onClick={props.onMenuClick}>
+        <button style={styles.menuButton} onClick={props.toggleDrawer}>
           <div style={styles.bar}></div>
           <div style={styles.bar}></div>
           <div style={styles.bar}></div>
@@ -15,8 +26,17 @@ const Header = (props) => {
         <h1 style={styles.title}>{props.title}</h1>
       </div>
       <div style={styles.right}>
-        <button style={styles.cartButton} onClick={props.onCartClick}>Cart</button>
-        <button style={styles.profileButton} onClick={props.onProfileClick}>Profile</button>
+        <Link to="/cart" style={styles.cartButton} >
+          <img src={cartIcon} alt="Cart" style={styles.icon} />
+        </Link>
+        <Link to="/profile" style={styles.profileButton} >
+			    <img src={profileIcon} alt="Profile" style={styles.icon} />
+        </Link>
+        {isAuthenticated ? (
+          <button style={styles.logoutButton} onClick={userLogout}>Logout</button>
+        ) : (
+          <button style={styles.loginButton} onClick={() => loginWithRedirect()}>Login</button>
+        )}
       </div>
     </header>
   );
@@ -47,6 +67,7 @@ const styles = {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'flex-end',
+    gap: '10px',
   },
   menuButton: {
     background: 'transparent',
@@ -74,6 +95,21 @@ const styles = {
     border: 'none',
   },
   profileButton: {
+    cursor: 'pointer',
+    background: 'transparent',
+    border: 'none',
+    marginRight: '20px',
+  },
+  icon: {
+    height: '20px',
+    width: '20px',
+  },
+  loginButton: {
+    cursor: 'pointer',
+    background: 'transparent',
+    border: 'none',
+  },
+  logoutButton: {
     cursor: 'pointer',
     background: 'transparent',
     border: 'none',

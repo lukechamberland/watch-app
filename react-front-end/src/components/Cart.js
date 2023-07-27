@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash, faHeart } from './icons';
 import { useNavigate } from 'react-router-dom';
 import { newCart } from './ProductDetails';
+import Layout from './Layout';
 
 const cart = [];
 
@@ -81,10 +82,11 @@ function Cart() {
   }
 
   return (
+    <Layout>
     <div className="cart">
       {cartState.map((product) => (
         <div className="cart-product-div" onClick={() => showProduct(product.id)}>
-        <div className="cart-image"></div>
+        <img class="cart-image" src={product.image_url}/>
         <div>
         <div className="cart-title">{product.name}</div>
         <div className="cart-product-price">
@@ -109,6 +111,7 @@ function Cart() {
         <button className="checkout-button" onClick={handleCheckout}>Checkout</button>
       </div>
     </div>
+    </Layout>
   );
 }
 
