@@ -25,6 +25,8 @@ function App() {
   console.log(user);
   const [userId, setUserId] = useState(null);
 
+  const [click, handleClick] = useState(0);
+
   useEffect(() => {
     if (isAuthenticated) {
       axios
@@ -69,7 +71,7 @@ function App() {
                   </div>
                 }
               />
-              <Route path="/product/:id" element={<ProductDetails />} />
+              <Route path="/product/:id" element={<ProductDetails handleClick={handleClick} click={click} allData={[]}/>} />
               <Route path="/newproduct" element={<NewProduct />} />
               <Route path="/cart" element={<Cart />} />
             </Routes>
