@@ -58,7 +58,7 @@ export default function ProfileTabs() {
         setUserproducts(filteredResults)
       })
     userProducts()
-  };
+  })
 
   useEffect(() => {
     setFavourites(JSON.parse(localStorage.getItem("favourites")))
