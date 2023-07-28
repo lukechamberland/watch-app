@@ -45,6 +45,10 @@ export default function ProfileTabs() {
     navigate(`/product/${id}`);
   }
 
+  const navToNewProduct = function() {
+    navigate('/newproduct');
+  }
+
   const onDelete = (id) => {
     axios.delete(`/api/products/${id}`, id)
     axios.get('/api/products')
@@ -197,7 +201,7 @@ export default function ProfileTabs() {
           <div style={styles.panel}>
           {userProducts()}
           </div>
-          <button class='newproductbtn' href='/newproduct'> ADD NEW PRODUCT </button>
+          <button class='newproductbtn' onClick={() => navToNewProduct()}> ADD NEW PRODUCT </button>
           </TabPanel>
         <TabPanel style={styles.panel} value="2">{userFavourites()}</TabPanel>
         <TabPanel value="3">{orderHistory()}</TabPanel>
