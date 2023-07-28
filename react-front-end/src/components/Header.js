@@ -5,11 +5,18 @@ import { Link } from 'react-router-dom';
 import { useAuth0 } from "@auth0/auth0-react";
 
 const Header = (props) => {
-  const { isAuthenticated, loginWithRedirect, user, logout } = useAuth0();
+  const { isAuthenticated, loginWithRedirect, logout } = useAuth0();
 
   const userLogout = () => {
     window.sessionStorage.removeItem("userId");
     logout();
+  };
+
+  const handleLinkClick = (e) => {
+    if (!isAuthenticated) {
+      e.preventDefault();
+      loginWithRedirect();
+    }
   };
 
   return (
@@ -23,13 +30,15 @@ const Header = (props) => {
       </div>
       <div style={styles.center}>
         <img src={props.logo} alt="Logo" style={styles.logo} />
-        <h1 style={styles.title}>{props.title}</h1>
+        <Link to="/" style={{ textDecoration: 'none', color: 'inherit' }}>
+          <h1 style={styles.title}>{props.title}</h1>
+        </Link>
       </div>
       <div style={styles.right}>
-        <Link to="/cart" style={styles.cartButton} >
+        <Link to="/cart" style={styles.cartButton} onClick={handleLinkClick}>
           <img src={cartIcon} alt="Cart" style={styles.icon} />
         </Link>
-        <Link to="/profile" style={styles.profileButton} >
+        <Link to="/profile" style={styles.profileButton} onClick={handleLinkClick}>
 			    <img src={profileIcon} alt="Profile" style={styles.icon} />
         </Link>
         {isAuthenticated ? (
