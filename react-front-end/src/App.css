@@ -457,3 +457,12 @@ label {
 .favourite-delete-button:hover {
   background-color: rgb(144, 144, 144);
 }
+
+.empty-cart {
+  font-size: 30px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.PDfavourite:hover {
+  color: red;
+}

@@ -92,8 +92,23 @@ function ProductDetails() {
     color: productDetailsState.favourite ? 'red' : 'rgb(203, 203, 203)'
   }
 
-  const styleTheHeart = function() {
-    if (heartState > 0) {
+  const styleTheHeart = function(objId) {
+    let count = 0;
+    const data = JSON.parse(localStorage.getItem("favourites"));
+
+    if (!data) {
+      return (
+        { color: 'grey'}
+      )
+    }
+
+    for (let product of data) {
+      if (product.id === objId) {
+        count += 1;
+      }
+    }
+
+    if (heartState > 0 || count > 0) {
       return (
         { color: 'red' }
       )
@@ -158,7 +173,7 @@ function ProductDetails() {
             <div class="PDavailable-text">Available:</div> <div class="check" style={style}>{isAvailable()}</div>
           </div>
           <div class="PDfavourite-div">
-            <div class="PDfavourite-text">Favourite:</div> <div class="PDfavourite" style={styleTheHeart()} onClick={() => changeToRed()}>{<FontAwesomeIcon icon={faHeart} />}</div>
+            <div class="PDfavourite-text">Favourite:</div> <div class="PDfavourite" style={styleTheHeart(productDetailsState.id)} onClick={() => changeToRed()}>{<FontAwesomeIcon icon={faHeart} />}</div>
           </div>
         </div>
         <div class="PDinventory">
