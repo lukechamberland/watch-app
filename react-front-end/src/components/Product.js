@@ -1,15 +1,33 @@
 import React from 'react';
 import axios from 'axios';
+import { useState, useEffect } from 'react';
+import myImage from '../images/images-2.jpg';
 
 function Product() {
-    axios.get('localhost:8080/api/products')
-    .then((response) => {
-      return (<div>{response[0].price}</div>)
+  const [data, setData] = useState([])
+
+  useEffect(() => {
+    axios.get('/api/products')
+    .then((result) => {
+      console.log(result);
+      setData(result.data);
     })
-    .catch((err) => {
-      console.log(err)
-    })
-  
+  }, []);
+
+  return (
+    <div class="products">
+      {data.map((product) => (
+        <div>
+          <div class="product">
+            <h1>{product.name}</h1>
+          </div>
+          <div class="price-div">
+            <h1 class="price"> ${product.price}</h1>
+          </div>
+        </div>
+      ))}
+    </div>
+  )
 }
 
 export default Product;
