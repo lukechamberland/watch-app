@@ -28,6 +28,13 @@ export default function ProfileTabs() {
     setValue(newValue);
   };
 
+  const deleteFavourite = function(pdc) {
+    const data = JSON.parse(localStorage.getItem("favourites"));
+    const correctArr = data.filter((otherPdc) => otherPdc.id !== pdc.id);
+    localStorage.setItem("favourites", JSON.stringify(correctArr));
+    window.location.reload();
+  }
+
   const navigate = useNavigate();
 
   
@@ -82,7 +89,7 @@ export default function ProfileTabs() {
   // })
 
   useEffect(() => {
-    setFavourites(JSON.parse(localStorage.getItem("favourites")))
+    setFavourites(JSON.parse(localStorage.getItem("favourites") || '[]'))
     }, []);
 
     const userFavourites = function() {
@@ -93,7 +100,7 @@ export default function ProfileTabs() {
             <img class="product-image" src={favourite.image_url} onClick={() => handleClick(favourite.id)}/>
             <div class="product-name">{favourite.name}</div>
             <div class="price-div">
-              <h1 class="price"> ${favourite.price}.00</h1>
+              <h1 class="price"> ${favourite.price}.00</h1> <button class="favourite-delete-button" onClick={() => deleteFavourite(favourite)}>DELETE</button>
             </div>
             <div class="PDinventory">
               <div class="in-stock">{favourite.inventory} in stock</div> <button class="add-to-cart" onClick={() => handleClick(favourite.id)}>ADD TO CART</button>
@@ -104,6 +111,7 @@ export default function ProfileTabs() {
       const noFavourites = (
         <div>You currently have no favourite products.</div>
       )
+     
       if (favourites.length !== 0) {
         return favouriteList;
       } else {

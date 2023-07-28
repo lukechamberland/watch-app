@@ -493,3 +493,7 @@ label {
 .PDfavourite:hover {
   color: red;
 }
+
+.favourites-delete-button {
+  margin-left: 10px;
+}
