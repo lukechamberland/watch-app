@@ -22,6 +22,7 @@ export default function ProfileTabs() {
   const [favourites, setFavourites] = useState([]);
   const [userproducts, setUserproducts] = useState([]);
   const [orderhistory, setOrderhistory] = useState([]);
+  const [reloadFlag, setReloadFlag] = React.useState(false);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -98,7 +99,7 @@ export default function ProfileTabs() {
               <button class="favourite-delete-button" onClick={() => deleteFavourite(favourite)}>Delete</button>
             </div>
             <div class="PDinventory">
-              <div class="in-stock">{favourite.inventory} in stock</div> <button class="add-to-cart" >Add to cart</button>
+              <div class="in-stock">{favourite.inventory} in stock</div> <button class="add-to-cart" onClick={() => handleClick(favourite.id)}>Add to cart</button>
             </div>
           </div>
         </div>
@@ -106,7 +107,7 @@ export default function ProfileTabs() {
       const noFavourites = (
         <div>You currently have no favourite products.</div>
       )
-      if (favourites.length != 0) {
+      if (favourites.length !== 0) {
         return favouriteList;
       } else {
         return noFavourites;

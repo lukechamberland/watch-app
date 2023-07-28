@@ -98,7 +98,7 @@ function ProductDetails() {
 
     if (!data) {
       return (
-        { color: 'grey'}
+        { color: ''}
       )
     }
 
@@ -114,7 +114,7 @@ function ProductDetails() {
       )
     } else {
       return (
-        { color: 'grey'}
+        { color: ''}
       )
     }
   }
