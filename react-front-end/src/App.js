@@ -15,11 +15,12 @@ const userContext = createContext();
 
 function App() {
     const { isAuthenticated, user } = useAuth0();
+    console.log(user)
     const [userId, setUserId] = useState(null);
 
     useEffect(() => {
       if (isAuthenticated) {
-        axios.post('/api/users', user) //where is this endpoint?
+        axios.post('/api/users', user)
           .then(res => {
             const userId = res.data.userId;
             setUserId(userId);
