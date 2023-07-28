@@ -10,7 +10,10 @@ import { useEffect, useState, createContext, useContext } from "react";
 //import Logout from './Logout';
 import Nav from './components/Navigation'
 import Product from './components/Product';
+import Login from './components/Login';
 import Logout from './components/Logout';
+import ToggleNav from "./components/ToggleNav";
+import Slideshow from "./components/Slideshow";
 
 const userContext = createContext();
 
@@ -52,14 +55,19 @@ function App() {
         <div>
           <h1>goodbye, {user.name}</h1>
           <button onClick={() => logout()}>Logout</button>
-
+          <Logout />
           <Product />
         </div>
       );
     } else {
       // Render content for non-authenticated users
       return (
+        <>
+        <Slideshow />
+        <ToggleNav />
         <Login />
+        </>
+    
       );
     }
 }
