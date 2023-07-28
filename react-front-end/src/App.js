@@ -9,6 +9,9 @@ import { useAuth0 } from '@auth0/auth0-react';
 //import Logout from './Logout';
 import Nav from './components/Navigation'
 import Product from './components/Product';
+import ToggleNav from './components/ToggleNav'
+
+import Slideshow from './components/Slideshow'
 
 function App() {
     const { isAuthenticated, loginWithRedirect, logout, user } = useAuth0();
@@ -19,7 +22,7 @@ function App() {
         <div>
           <h1>goodbye, {user.name}</h1>
           <button onClick={() => logout()}>Logout</button>
-
+          
           <Product />
         </div>
       );
@@ -29,7 +32,8 @@ function App() {
         <div>
           <h1>Welcome! Please log in.</h1>
           <button onClick={() => loginWithRedirect()}>Login</button>
-
+          <ToggleNav />
+          <Slideshow />
         </div>
       );
     }
