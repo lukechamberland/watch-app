@@ -10,10 +10,12 @@ import { useEffect, useState, createContext, useContext } from "react";
 //import Logout from './Logout';
 import Nav from './components/Navigation'
 import Product from './components/Product';
+import Product2 from './components/Product2';
 import Login from './components/Login';
 import Logout from './components/Logout';
 import ToggleNav from "./components/ToggleNav";
 import Slideshow from "./components/Slideshow";
+
 
 const userContext = createContext();
 
@@ -63,9 +65,11 @@ function App() {
       // Render content for non-authenticated users
       return (
         <>
-        <Slideshow />
-        <ToggleNav />
         <Login />
+        <ToggleNav />
+        <Slideshow />
+        <Product2 />
+
         </>
     
       );
