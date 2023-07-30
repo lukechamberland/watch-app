@@ -4,15 +4,16 @@ import axios from "axios";
 import "./App.css";
 import { useAuth0 } from "@auth0/auth0-react";
 import { useEffect, useState, createContext, useContext } from "react";
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 //Import components
 //import Login from './Login';
 //import Logout from './Logout';
-import Nav from './components/Navigation'
-import Product from './components/Product';
-import Login from './components/Login';
-import Logout from './components/Logout';
+import Nav from "./components/Navigation";
+import Product from "./components/Product";
+import Product2 from "./components/Product2";
+import Login from "./components/Login";
+import Logout from "./components/Logout";
 import ToggleNav from "./components/ToggleNav";
 import Slideshow from "./components/Slideshow";
 import ProductDetails from "./components/ProductDetails";
@@ -21,22 +22,23 @@ const userContext = createContext();
 
 function App() {
   const { isAuthenticated, loginWithRedirect, logout, user } = useAuth0();
-  console.log(user)
+  console.log(user);
   const [userId, setUserId] = useState(null);
 
   useEffect(() => {
     if (isAuthenticated) {
-      axios.post('/api/users', user)
-        .then(res => {
+      axios
+        .post("/api/users", user)
+        .then((res) => {
           const userId = res.data.userId;
           setUserId(userId);
-          window.sessionStorage.setItem('userId', userId);
+          window.sessionStorage.setItem("userId", userId);
         })
-        .catch(err => {
-          console.log(err)
+        .catch((err) => {
+          console.log(err);
         });
     }
-  }, [isAuthenticated, user])
+  }, [isAuthenticated, user]);
   /*
   useEffect (() => {
       //make a request to a back end router
@@ -57,28 +59,32 @@ function App() {
       <BrowserRouter>
         <div>
           <Routes>
-            <Route exact path="/" element={
-              <div>
-                <h1>goodbye, {user.name}</h1>
-                <button onClick={() => logout()}>Logout</button>
-                <Logout />
-                <Product />
-              </div>
-            } />
+            <Route
+              exact
+              path="/"
+              element={
+                <div>
+                  <h1>goodbye, {user.name}</h1>
+                  <button onClick={() => logout()}>Logout</button>
+                  <Logout />
+                  <Product />
+                </div>
+              }
+            />
             <Route path="/product/:id" element={<ProductDetails />} />
           </Routes>
         </div>
       </BrowserRouter>
-    )
+    );
   } else {
     // Render content for non-authenticated users
     return (
       <>
-        <Slideshow />
-        <ToggleNav />
         <Login />
+        <ToggleNav />
+        <Slideshow />
+        <Product2 />
       </>
-
     );
   }
 }
