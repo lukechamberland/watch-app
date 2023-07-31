@@ -53,8 +53,6 @@ function App() {
       // Render content for authenticated users
       return (
         <div>
-          <h1>goodbye, {user.name}</h1>
-          <button onClick={() => logout()}>Logout</button>
           <Logout />
           <Product />
         </div>
