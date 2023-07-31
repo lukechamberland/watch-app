@@ -17,6 +17,7 @@ import Logout from "./components/Logout";
 import ToggleNav from "./components/ToggleNav";
 import Slideshow from "./components/Slideshow";
 import ProductDetails from "./components/ProductDetails";
+import NewProduct from "./components/NewProduct";
 
 const userContext = createContext();
 
@@ -72,6 +73,7 @@ function App() {
               }
             />
             <Route path="/product/:id" element={<ProductDetails />} />
+            <Route path="/newproduct" element={<NewProduct />} />
           </Routes>
         </div>
       </BrowserRouter>
@@ -84,8 +86,10 @@ function App() {
         <ToggleNav />
         <Slideshow />
         <Product2 />
+        <NewProduct />
       </>
     );
   }
 }
+
 export default App;
