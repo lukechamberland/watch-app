@@ -47,17 +47,34 @@
 
 .products {
   display: flex;
-  margin: 0 auto;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.product-wrapper {
+  margin: 10px;
+  width: 375px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
 }
 
 .product {
   margin-left: 10px;
   border-radius: 10px;
-  background-image: url('images/images-2.jpg');
+  background-image: url('images/silver-watch.jpg');
   background-size: cover;
   background-position: center;
-  width: 100%;
+  width: 200px;
   height: 300px;
+  margin-right: 100px;
+  margin-left: 100px;
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.product:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);;
 }
 
 .price {
@@ -69,5 +86,88 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 60px;
+  height: 40px;
+}
+
+.product-name {
+  margin-top: 15px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-weight: 150;
+  text-align: center;
+  height: 25px;
+}
+
+.product-details {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  text-align: center;
+}
+
+.product-details-image {
+  margin-left: 200px;
+  border-radius: 10px;
+  background-image: url('images/silver-watch.jpg');
+  background-size: cover;
+  background-position: center;
+  width: 400px;
+  height: 600px;
+}
+
+.product-details-page {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.about {
+  flex: 0 0 425px;
+  padding: 10px;
+  margin-left: 100px;
+  margin-top: 50px;
+  margin-right: 100px;
+  height: 450px;
+}
+
+.PDname {
+  font-size: 35px;
+  font-weight: 200;
+}
+
+.PDdescription {
+  margin-top: 50px;
+  font-size: 20px;
+  font-weight: 125;
+}
+
+.PDprice {
+  margin-top: 150px;
+  font-size: 30px;
+  font-weight: 250;
+}
+
+.PDavailable {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  margin-right: 350px;
+  margin-top: 50px;
+}
+
+.check {
+  margin-top: 15px;
+  font-size: 30px;
+}
+
+.PDavailable-text {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: 20px;
+  font-weight: 150;
+}
+
+.PDfavourite {
+  color: red;
 }

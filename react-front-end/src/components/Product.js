@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
-import myImage from '../images/images-2.jpg';
+import { useNavigate } from 'react-router-dom'
 
 function Product() {
   const [data, setData] = useState([])
@@ -14,17 +14,23 @@ function Product() {
     })
   }, []);
 
+  const navigate = useNavigate();
+
+  const handleClick = (id) => {
+    navigate(`/product/${id}`);
+  }
+
   return (
     <div class="products">
       {data.map((product) => (
-        <div>
-          <div class="product">
-            <h1>{product.name}</h1>
+        <div class="product-wrapper">
+          <div class="product" onClick={() => handleClick(product.id)}></div>
+            <div class="product-details"></div>
+            <div class="product-name">{product.name}</div>
+            <div class="price-div">
+              <h1 class="price"> ${product.price}.00</h1>
+            </div>
           </div>
-          <div class="price-div">
-            <h1 class="price"> ${product.price}</h1>
-          </div>
-        </div>
       ))}
     </div>
   )
