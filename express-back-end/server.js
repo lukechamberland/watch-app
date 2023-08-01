@@ -33,6 +33,12 @@ app.get('/api/products', (req, res) => {
   });
 });
 
+app.post('/newproduct', (req, res) => {
+  res.render(req.body)
+  // addToProducts(req.body)
+})
+
+
 app.get('/api/order_products', (req, res) => {
   getFromOrderProducts().then((result) => {
     res.json(result);

@@ -21,19 +21,22 @@ function NewProduct() {
     >
       <Form>
         <label htmlFor="productName">Product Name</label>
-        <Field id="productName" name="productName" />
+        <Field class='field' id="productName" name="productName" />
 
         <label htmlFor="productDescription">Product Description</label>
-        <Field id="productDescription" name="productDescription" />
+        <Field class='field' id="productDescription" name="productDescription" />
 
         <label htmlFor="productPrice">Product Price</label>
         <Field
+          class='field'
           id="productPrice"
           name="productPrice"
+          type='number'
         />
 
         <label htmlFor="productImage">Product Image</label>
         <Field
+          class='field'
           id="productImage"
           name="productImage"
         />
