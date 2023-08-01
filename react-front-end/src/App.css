@@ -229,3 +229,17 @@
 .add-to-cart:hover {
   background-color: rgb(186, 186, 186);
 }
+
+.field {
+  display: flex;
+  flex-direction: row;
+  border-color: black;
+  margin-bottom: 5px;
+}
+
+label {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 5px;
+  width: fit-content;
+}
