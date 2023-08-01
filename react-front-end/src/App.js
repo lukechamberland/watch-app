@@ -64,8 +64,6 @@ function App() {
               path="/"
               element={
                 <div>
-                  <h1>goodbye, {user.name}</h1>
-                  <button onClick={() => logout()}>Logout</button>
                   <Logout />
                   <Product />
                 </div>
