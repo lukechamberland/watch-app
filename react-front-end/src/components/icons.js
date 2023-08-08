@@ -5,6 +5,7 @@ import {
   faHeart,
   faCheck,
   faXmark,
+  faTrash
 } from '@fortawesome/free-solid-svg-icons';
 
 library.add(
@@ -13,6 +14,7 @@ library.add(
   faHeart,
   faCheck,
   faXmark,
+  faTrash
 );
 
-export { faHeart, faCheck, faXmark }
+export { faHeart, faCheck, faXmark, faTrash }

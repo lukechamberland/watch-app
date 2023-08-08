@@ -6,23 +6,23 @@ CREATE TABLE users (
 );
 
 CREATE TABLE order_products (
-  id INTEGER PRIMARY KEY NOT NULL,
+  id SERIAL PRIMARY KEY,
   product_id INTEGER REFERENCES products(id),
   quantity INTEGER NOT NULL
 );
 
 CREATE TABLE orders (
-  id INTEGER NOT NULL PRIMARY KEY,
+  id SERIAL PRIMARY KEY,
   order_products_id INTEGER NOT NULL REFERENCES order_products(id),
-  user_id INTEGER REFERENCES users(id), 
+  user_id INTEGER REFERENCES users(id),
   subtotal_amount INTEGER NOT NULL,
   tax_amount INTEGER NOT NULL,
-  total_amount INTEGER NOT NULL
+  total_amount INTEGER NOT NULL,
+  order_date DATE
 );
 
-
 CREATE TABLE products (
-  id INTEGER PRIMARY KEY NOT NULL,
+  id SERIAL PRIMARY KEY,
   user_id INTEGER REFERENCES users(id),
   image_url VARCHAR (255) NOT NULL, 
   description VARCHAR (255) NOT NULL,
