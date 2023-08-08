@@ -11,13 +11,14 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 //import Logout from './Logout';
 import Nav from "./components/Navigation";
 import Product from "./components/Product";
-import Product2 from "./components/Product2";
 import Login from "./components/Login";
 import Logout from "./components/Logout";
 import ToggleNav from "./components/ToggleNav";
 import Slideshow from "./components/Slideshow";
 import ProductDetails from "./components/ProductDetails";
 import NewProduct from "./components/NewProduct";
+import ProfileTabs from "./components/ProfileTabs"
+import UpdateProduct from "./components/UpdateProduct";
 
 const userContext = createContext();
 
@@ -72,6 +73,8 @@ function App() {
             />
             <Route path="/product/:id" element={<ProductDetails />} />
             <Route path="/newproduct" element={<NewProduct />} />
+            <Route path="/updateproduct" element={<UpdateProduct />} />
+            <Route path="/profile" element={<ProfileTabs />} />
           </Routes>
         </div>
       </BrowserRouter>
@@ -83,7 +86,6 @@ function App() {
         <Login />
         <ToggleNav />
         <Slideshow />
-        <Product2 />
         <NewProduct />
       </>
     );
