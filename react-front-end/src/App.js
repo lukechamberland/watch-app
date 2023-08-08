@@ -9,13 +9,14 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 //Import components
 import Nav from "./components/Navigation";
 import Product from "./components/Product";
-import Product2 from "./components/Product2";
 import Login from "./components/Login";
 import Logout from "./components/Logout";
 import ToggleNav from "./components/ToggleNav";
 import Slideshow from "./components/Slideshow";
 import ProductDetails from "./components/ProductDetails";
 import NewProduct from "./components/NewProduct";
+import ProfileTabs from "./components/ProfileTabs"
+import UpdateProduct from "./components/UpdateProduct";
 import Cart from "./components/Cart";
 
 function App() {
@@ -56,25 +57,27 @@ function App() {
   if (isAuthenticated) {
     // Render content for authenticated users
     return (
-        <BrowserRouter>
-          <div>
-            <Routes>
-              <Route
-                exact
-                path="/"
-                element={
-                  <div>
-                    <Logout />
-                    <Product />
-                  </div>
-                }
-              />
-              <Route path="/product/:id" element={<ProductDetails handleClick={handleClick} click={click} allData={[]}/>} />
-              <Route path="/newproduct" element={<NewProduct />} />
-              <Route path="/cart" element={<Cart />} />
-            </Routes>
-          </div>
-        </BrowserRouter>
+      <BrowserRouter>
+        <div>
+          <Routes>
+            <Route
+              exact
+              path="/"
+              element={
+                <div>
+                  <Logout />
+                  <Product />
+                </div>
+              }
+            />
+            <Route path="/product/:id" element={<ProductDetails handleClick={handleClick} click={click} allData={[]}/>} />
+            <Route path="/newproduct" element={<NewProduct />} />
+            <Route path="/updateproduct" element={<UpdateProduct />} />
+            <Route path="/profile" element={<ProfileTabs />} />
+            <Route path="/cart" element={<Cart />} />
+          </Routes>
+        </div>
+      </BrowserRouter>
     );
   } else {
     // Render content for non-authenticated users
@@ -83,7 +86,6 @@ function App() {
         <Login />
         <ToggleNav />
         <Slideshow />
-        <Product2 />
         <NewProduct />
       </>
     );
