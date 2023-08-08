@@ -56,21 +56,45 @@ function Cart() {
     localStorage.setItem("allProducts", JSON.stringify(setParsedProduct));
   }
 
+  function handleCheckout() {
+    const products = cartState.map((product) => ({
+      productId: product.id,
+      quantity: 1 // Modify this if you have quantity information
+    }));
+  
+    fetch('/create-checkout-session', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ products }),
+    })
+    .then((res) => res.json())
+    .then((data) => {
+      if (data.url) {
+        window.location.href = data.url;
+      } else {
+        console.error('Checkout URL not found');
+      }
+    })
+    .catch((error) => console.error('An error occurred:', error));
+  }
+
   return (
-    <div class="cart">
+    <div className="cart">
       {cartState.map((product) => (
-        <div class="cart-product-div" onClick={() => showProduct(product.id)}>
-        <div class="cart-image"></div>
+        <div className="cart-product-div" onClick={() => showProduct(product.id)}>
+        <div className="cart-image"></div>
         <div>
-        <div class="cart-title">{product.name}</div>
-        <div class="cart-product-price">
+        <div className="cart-title">{product.name}</div>
+        <div className="cart-product-price">
           ${product.price}.00
         </div>
         </div>
-        <div class="cart-heart">
+        <div className="cart-heart">
           <FontAwesomeIcon icon={faHeart} />
         </div>
-        <div class="trash-can" onClick={(event) => {
+        <div className="trash-can" onClick={(event) => {
           event.stopPropagation();
           removeProduct(product)
         }}>
@@ -78,11 +102,11 @@ function Cart() {
         </div>
         </div>
       ))}
-      <div class="final-items">
-        <div class="total-price">
-          Total price + GST: <div class="final-price">${getTotalPrice(cartState)}</div>
+      <div className="final-items">
+        <div className="total-price">
+          Total price + GST: <div className="final-price">${getTotalPrice(cartState)}</div>
         </div>
-        <button class="checkout-button">Checkout</button>
+        <button className="checkout-button" onClick={handleCheckout}>Checkout</button>
       </div>
     </div>
   );

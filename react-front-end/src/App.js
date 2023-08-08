@@ -7,8 +7,6 @@ import { useEffect, useState, createContext, useContext } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 //Import components
-//import Login from './Login';
-//import Logout from './Logout';
 import Nav from "./components/Navigation";
 import Product from "./components/Product";
 import Product2 from "./components/Product2";
