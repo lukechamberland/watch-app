@@ -30,7 +30,7 @@ export default function TemporaryDrawer() {
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <List>
-        {['Mens', 'Womens', 'Kids', 'Athletic', 'Secondhand'].map((text, index) => (
+        {['Mens', 'Womens', 'Kids', 'Athletic'].map((text, index) => (
           <ListItem key={text} disablePadding>
             <ListItemButton>
               <ListItemText primary={text} />

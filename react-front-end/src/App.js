@@ -17,6 +17,10 @@ import NewProduct from "./components/NewProduct";
 import ProfileTabs from "./components/ProfileTabs"
 import UpdateProduct from "./components/UpdateProduct";
 import Cart from "./components/Cart";
+import Mens from "./components/Mens";
+import Womens from "./components/Womens";
+import Athletic from "./components/Athletic";
+import Kids from "./components/Kids"
 
 function App() {
   const { isAuthenticated, loginWithRedirect, logout, user } = useAuth0();
@@ -77,10 +81,10 @@ function App() {
             <Route path="/updateproduct" element={<UpdateProduct />} />
             <Route path="/profile" element={<ProfileTabs />} />
             <Route path="/cart" element={<Cart />} />
-            {/* <Route path="/mens" element={<Mens />} />
+            <Route path="/mens" element={<Mens />} />
             <Route path="/womens" element={<Womens />} />
             <Route path="/kids" element={<Kids />} />
-            <Route path="/athletic" element={<Athletic />} /> */}
+            <Route path="/athletic" element={<Athletic />} />
 
           </Routes>
         </div>

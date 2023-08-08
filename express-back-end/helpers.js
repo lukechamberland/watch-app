@@ -45,6 +45,66 @@ const getFromProducts = function () {
   });
 };
 
+const getMensProducts = function () {
+  return new Promise((resolve, reject) => {
+    const statement = "SELECT * FROM products WHERE category='mens';";
+    pool
+      .query(statement)
+      .then((result) => {
+        resolve(result.rows);
+      })
+      .catch((err) => {
+        console.error("Error executing query:", err);
+        reject(err);
+      });
+  });
+};
+
+const getWomensProducts = function () {
+  return new Promise((resolve, reject) => {
+    const statement = "SELECT * FROM products WHERE category='womens';";
+    pool
+      .query(statement)
+      .then((result) => {
+        resolve(result.rows);
+      })
+      .catch((err) => {
+        console.error("Error executing query:", err);
+        reject(err);
+      });
+  });
+};
+
+const getKidsProducts = function () {
+  return new Promise((resolve, reject) => {
+    const statement = "SELECT * FROM products WHERE category='kids';";
+    pool
+      .query(statement)
+      .then((result) => {
+        resolve(result.rows);
+      })
+      .catch((err) => {
+        console.error("Error executing query:", err);
+        reject(err);
+      });
+  });
+};
+
+const getAthleticProducts = function () {
+  return new Promise((resolve, reject) => {
+    const statement = "SELECT * FROM products WHERE category='athletic';";
+    pool
+      .query(statement)
+      .then((result) => {
+        resolve(result.rows);
+      })
+      .catch((err) => {
+        console.error("Error executing query:", err);
+        reject(err);
+      });
+  });
+};
+
 const addToOrderProducts = function (id, product_id, quantity, order_id) {
   const statement =
     "INSERT INTO order_products (id, product_id, quantity, order_id) VALUES ($1, $2, $3, $4);";
@@ -180,6 +240,10 @@ const removeProduct = function (id) {
 module.exports = {
   addToProducts,
   getFromProducts,
+  getMensProducts,
+  getWomensProducts,
+  getKidsProducts,
+  getAthleticProducts,
   addToOrderProducts,
   getFromOrderProducts,
   addToOrders,

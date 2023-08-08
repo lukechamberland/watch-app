@@ -63,7 +63,7 @@
 .product {
   margin-left: 10px;
   border-radius: 10px;
-  background-image: url('images/silver-watch.jpg');
+  /* background-image: url('images/silver-watch.jpg'); */
   background-size: cover;
   background-position: center;
   width: 200px;
@@ -109,7 +109,6 @@
 .product-details-image {
   margin-left: 100px;
   border-radius: 10px;
-  background-image: url('images/silver-watch.jpg');
   background-size: cover;
   background-position: center;
   width: 400px;

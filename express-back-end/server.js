@@ -5,6 +5,10 @@ const bodyParser = require("body-parser");
 const {
   addToProducts,
   getFromProducts,
+  getMensProducts,
+  getWomensProducts,
+  getKidsProducts,
+  getAthleticProducts,
   addToOrderProducts,
   getFromOrderProducts,
   addToOrders,
@@ -50,6 +54,46 @@ app.get("/api/data", (req, res) =>
 
 app.get("/api/products", (req, res) => {
   getFromProducts()
+    .then((result) => {
+      res.json(result);
+    })
+    .catch((error) => {
+      res.status(500).json({ error: "Internal Server Error" });
+    });
+});
+
+app.get("/api/products/mens", (req, res) => {
+  getMensProducts()
+    .then((result) => {
+      res.json(result);
+    })
+    .catch((error) => {
+      res.status(500).json({ error: "Internal Server Error" });
+    });
+});
+
+app.get("/api/products/womens", (req, res) => {
+  getWomensProducts()
+    .then((result) => {
+      res.json(result);
+    })
+    .catch((error) => {
+      res.status(500).json({ error: "Internal Server Error" });
+    });
+});
+
+app.get("/api/products/kids", (req, res) => {
+  getKidsProducts()
+    .then((result) => {
+      res.json(result);
+    })
+    .catch((error) => {
+      res.status(500).json({ error: "Internal Server Error" });
+    });
+});
+
+app.get("/api/products/athletic", (req, res) => {
+  getAthleticProducts()
     .then((result) => {
       res.json(result);
     })
