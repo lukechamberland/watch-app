@@ -86,7 +86,7 @@ function Cart() {
     <div className="cart">
       {cartState.map((product) => (
         <div className="cart-product-div" onClick={() => showProduct(product.id)}>
-        <div className="cart-image"></div>
+        <img class="cart-image" src={product.image_url}/>
         <div>
         <div className="cart-title">{product.name}</div>
         <div className="cart-product-price">

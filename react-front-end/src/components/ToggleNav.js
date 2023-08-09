@@ -18,7 +18,7 @@ export default function ToggleNav({ isOpen, toggleDrawer }) {
         onKeyDown={() => toggleDrawer(false)}
       >
         <List>
-          {['Mens', 'Womens', 'Kids', 'Athletic', 'Secondhand'].map((text, index) => (
+          {['Mens', 'Womens', 'Kids', 'Athletic'].map((text, index) => (
             <ListItem key={text} disablePadding>
               <ListItemButton>
                 <ListItemText primary={text} />
@@ -39,4 +39,4 @@ export default function ToggleNav({ isOpen, toggleDrawer }) {
         {list}
       </Drawer>
     );
-}
+};
