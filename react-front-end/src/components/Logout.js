@@ -9,7 +9,6 @@ const Logout = () => {
  }
   return (
     <div>
-      <h1>Hello, {user.name}</h1>
       <button onClick={userLogout}>Logout</button>
     </div>
   );

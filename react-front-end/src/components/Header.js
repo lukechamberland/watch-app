@@ -2,8 +2,16 @@ import React from 'react';
 import cartIcon from '../images/cart.png';
 import profileIcon from '../images/profile.png';
 import { Link } from 'react-router-dom';
+import { useAuth0 } from "@auth0/auth0-react";
 
 const Header = (props) => {
+  const { isAuthenticated, loginWithRedirect, user, logout } = useAuth0();
+
+  const userLogout = () => {
+    window.sessionStorage.removeItem("userId");
+    logout();
+  };
+
   return (
     <header style={styles.header}>
       <div style={styles.left}>
@@ -24,6 +32,11 @@ const Header = (props) => {
         <Link to="/profile" style={styles.profileButton} >
 			    <img src={profileIcon} alt="Profile" style={styles.icon} />
         </Link>
+        {isAuthenticated ? (
+          <button style={styles.logoutButton} onClick={userLogout}>Logout</button>
+        ) : (
+          <button style={styles.loginButton} onClick={() => loginWithRedirect()}>Login</button>
+        )}
       </div>
     </header>
   );
@@ -54,6 +67,7 @@ const styles = {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'flex-end',
+    gap: '10px',
   },
   menuButton: {
     background: 'transparent',
@@ -84,10 +98,21 @@ const styles = {
     cursor: 'pointer',
     background: 'transparent',
     border: 'none',
+    marginRight: '20px',
   },
   icon: {
     height: '20px',
     width: '20px',
+  },
+  loginButton: {
+    cursor: 'pointer',
+    background: 'transparent',
+    border: 'none',
+  },
+  logoutButton: {
+    cursor: 'pointer',
+    background: 'transparent',
+    border: 'none',
   },
 };
 

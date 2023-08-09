@@ -1,17 +1,13 @@
-import React, { Component } from "react";
-import classnames from "classnames";
+import React from "react";
 import axios from "axios";
 import "./App.css";
 import { useAuth0 } from "@auth0/auth0-react";
-import { useEffect, useState, createContext, useContext } from "react";
+import { useEffect, useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { useNavigate } from 'react-router-dom';
+
 
 //Import components
 import Product from "./components/Product";
-import Login from "./components/Login";
-import Logout from "./components/Logout";
-import ToggleNav from "./components/ToggleNav";
 import Slideshow from "./components/Slideshow";
 import ProductDetails from "./components/ProductDetails";
 import NewProduct from "./components/NewProduct";
@@ -26,7 +22,6 @@ import Kids from "./components/Kids"
 
 function App() {
   const { isAuthenticated, user } = useAuth0();
-  console.log(user);
   const [userId, setUserId] = useState(null);
 
   const [click, handleClick] = useState(0);
@@ -58,7 +53,6 @@ function App() {
               element={
                 <div>
                   <Layout>
-                    <Logout />
                     <Slideshow />
                     <Product />
                   </Layout>
@@ -85,11 +79,26 @@ function App() {
     return (
       <BrowserRouter>
       <>
-        <Layout>
-        <Login />
-        <Slideshow />
-        <Product />
-        </Layout>
+        <Routes>
+        <Route
+              exact
+              path="/"
+              element={
+                <div>
+                  <Layout>
+                    <Slideshow />
+                    <Product />
+                  </Layout>
+                </div>
+              }
+            />
+          <Route path="/mens" element={<Mens />} />
+          <Route path="/womens" element={<Womens />} />
+          <Route path="/kids" element={<Kids />} />
+          <Route path="/athletic" element={<Athletic />} />
+          <Route path="/product/:id" element={<ProductDetails handleClick={handleClick} click={click} allData={[]}/>} />
+        </Routes>
+        
       </>
   
       </BrowserRouter>

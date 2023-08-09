@@ -9,12 +9,14 @@ import Stack from "@mui/material/Stack"
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 import { addToCart, callAddToCart } from './stateHelpers';
-import Header from "./Header"
+import Layout from "./Layout"
+import { useNavigate } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 
 export default function ProfileTabs() {
   
-
+  const { id } = useParams();
   const [value, setValue] = React.useState('1');
   const [favourites, setFavourites] = useState([]);
   const [userproducts, setUserproducts] = useState([]);
@@ -24,6 +26,10 @@ export default function ProfileTabs() {
     setValue(newValue);
   };
 
+  const navigate = useNavigate();
+
+  
+
   const onEdit = (id, image, description, name, price) => {
     const productId = window.sessionStorage.setItem('productId', id)
     const productImage = window.sessionStorage.setItem('productImage', image)
@@ -31,6 +37,11 @@ export default function ProfileTabs() {
     const productName = window.sessionStorage.setItem('productName', name)
     const productPrice = window.sessionStorage.setItem('productPrice', price)
   }
+
+  const handleClick = (id) => {
+    navigate(`/product/${id}`);
+  }
+
   const onDelete = (id) => {
     axios.delete(`/api/products/${id}`, id)
     axios.get('/api/products')
@@ -72,7 +83,7 @@ export default function ProfileTabs() {
         <div class="products" key={favourite.name + favourite.price + idx}>
           <div class="product-wrapper">
             <div class="product-details"></div>
-            <img class="product-details-image" src={favourite.image_url}/>
+            <img class="product-image" src={favourite.image_url} onClick={() => handleClick(favourite.id)}/>
             <div class="product-name">{favourite.name}</div>
             <div class="price-div">
               <h1 class="price"> ${favourite.price}.00</h1>
@@ -106,14 +117,14 @@ export default function ProfileTabs() {
         <div class="products">
         <div class="product-wrapper">
             <div class="product-details"></div>
-            <img class="product-details-image" src={product.image_url}/>
+            <img class="product-image" src={product.image_url}/>
             <div class="product-name">{product.name}</div>
             <div class="price-div">
               <h1 class="price"> ${product.price}.00</h1>
             </div>
             <Stack direction="row" spacing={2}>
-              <Button variant="outlined" href="/updateproduct" onClick={() => onEdit(product.id, product.image_url, product.description, product.name, product.price)}>EDIT</Button>
-              <Button variant="outlined" color="error" onClick={() => onDelete(product.id)}>DELETE</Button>
+              <Button variant="contained" href="/updateproduct" onClick={() => onEdit(product.id, product.image_url, product.description, product.name, product.price)}>EDIT</Button>
+              <Button variant="contained" onClick={() => onDelete(product.id)}>DELETE</Button>
             </Stack>
           </div>
         </div>
@@ -150,7 +161,7 @@ export default function ProfileTabs() {
 
   return (
     <>
-    <Header />
+    <Layout />
     <Box sx={{ width: '100%', typography: 'body1' }}>
       <TabContext value={value}>
         <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
