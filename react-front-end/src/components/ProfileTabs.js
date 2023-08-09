@@ -45,6 +45,22 @@ export default function ProfileTabs() {
   };
 
   useEffect(() => {
+    let userId = sessionStorage.getItem("userId");
+    axios.get('/api/favourites')
+      .then((results) => {
+        let userId = sessionStorage.getItem("userId");
+        const mapResults = results.data.map((element) => {
+          if(element.user_id == userId) {
+            return element
+          }
+        })   
+        const filteredResults = mapResults.filter((result) => result != undefined)
+        setUserproducts(filteredResults)
+      })
+    userProducts()
+  };
+
+  useEffect(() => {
     setFavourites(JSON.parse(localStorage.getItem("favourites")))
     // let userId = sessionStorage.getItem("userId");
     // axios.get('/api/favourites')
