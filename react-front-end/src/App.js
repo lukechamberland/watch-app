@@ -18,6 +18,7 @@ import NewProduct from "./components/NewProduct";
 import ProfileTabs from "./components/ProfileTabs"
 import UpdateProduct from "./components/UpdateProduct";
 import Cart from "./components/Cart";
+import Header from "./components/Header";
 
 function App() {
   const { isAuthenticated, loginWithRedirect, logout, user } = useAuth0();
@@ -54,6 +55,19 @@ function App() {
       //second option windows.sessionStorage
   }, [isAuthenticated])
   */
+
+  const handleMenuClick = () => {
+    console.log('Menu clicked!');
+  };
+
+  const handleCartClick = () => {
+    console.log('Cart clicked!');
+  };
+
+  const handleProfileClick = () => {
+    console.log('Profile clicked!');
+  };
+
   if (isAuthenticated) {
     // Render content for authenticated users
     return (
@@ -83,6 +97,13 @@ function App() {
     // Render content for non-authenticated users
     return (
       <>
+        <Header
+        title="TimelessTrends"
+        logo="/path/to/logo.png"
+        onMenuClick={handleMenuClick}
+        onCartClick={handleCartClick}
+        onProfileClick={handleProfileClick}
+        />
         <Login />
         <ToggleNav />
         <Slideshow />
