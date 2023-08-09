@@ -1,3 +1,4 @@
+/*
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import Tab from '@mui/material/Tab';
@@ -58,7 +59,7 @@ export default function ProfileTabs() {
         setUserproducts(filteredResults)
       })
     userProducts()
-  };
+  },
 
   useEffect(() => {
     setFavourites(JSON.parse(localStorage.getItem("favourites")))
@@ -76,7 +77,7 @@ export default function ProfileTabs() {
 
     //   });
   
-    }, []);
+    }, []),
 
     const userFavourites = function() {
       const favouriteList = favourites.map((favourite, idx) => 
@@ -183,3 +184,4 @@ export default function ProfileTabs() {
     </Box>
   );
 }
+*/
