@@ -8,6 +8,7 @@ import Button from "@mui/material/Button"
 import Stack from "@mui/material/Stack"
 import axios from 'axios';
 import { useState, useEffect } from 'react';
+import { addToCart, callAddToCart } from './stateHelpers';
 
 
 export default function ProfileTabs() {
@@ -36,18 +37,20 @@ export default function ProfileTabs() {
   };
 
   useEffect(() => {
-    let userId = sessionStorage.getItem("userId");
-    axios.get('/api/favourites')
-      .then((results) => {
-        const data = (results.data);
-        const mapResults = data.map((element) => {
-          if(element.user_id == userId) {
-            return element
-          }
-        })   
-        const filteredResults = mapResults.filter((result) => result != undefined)
-        setFavourites(filteredResults)
-      });
+    setFavourites(JSON.parse(localStorage.getItem("favourites")))
+    // let userId = sessionStorage.getItem("userId");
+    // axios.get('/api/favourites')
+    //   .then((results) => {
+    //     // const data = (results.data);
+    //     // const mapResults = data.map((element) => {
+    //     //   if(element.user_id == userId) {
+    //     //     return element
+    //     //   }
+    //     // })   
+    //     // const filteredResults = mapResults.filter((result) => result != undefined)
+    //     // setFavourites(filteredResults)
+
+    //   });
   
     }, []);
 
@@ -62,7 +65,7 @@ export default function ProfileTabs() {
               <h1 class="price"> ${favourite.price}.00</h1>
             </div>
             <div class="PDinventory">
-              <div class="in-stock">{favourite.inventory} in stock</div> <button class="add-to-cart">Add to cart</button>
+              <div class="in-stock">{favourite.inventory} in stock</div> <button class="add-to-cart" >Add to cart</button>
             </div>
           </div>
         </div>

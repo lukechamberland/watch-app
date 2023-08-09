@@ -22,7 +22,6 @@ const cors = require("cors");
 const { findOrCreateUser } = require("../db/queries/users");
 
 const { Pool } = require('pg');
-
 const pool = new Pool({
   user: process.env.DB_USER,
   host: process.env.DB_HOST,
