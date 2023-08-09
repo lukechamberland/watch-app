@@ -7,7 +7,6 @@ import { useEffect, useState, createContext, useContext } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 //Import components
-import Nav from "./components/Navigation";
 import Product from "./components/Product";
 import Login from "./components/Login";
 import Logout from "./components/Logout";
@@ -80,15 +79,23 @@ function App() {
               element={
                 <div>
                   <Logout />
+                  <Slideshow />
+                  <ToggleNav />
                   <Product />
                 </div>
               }
             />
+        
             <Route path="/product/:id" element={<ProductDetails handleClick={handleClick} click={click} allData={[]}/>} />
             <Route path="/newproduct" element={<NewProduct />} />
             <Route path="/updateproduct" element={<UpdateProduct />} />
             <Route path="/profile" element={<ProfileTabs />} />
             <Route path="/cart" element={<Cart />} />
+            {/* <Route path="/mens" element={<Mens />} />
+            <Route path="/womens" element={<Womens />} />
+            <Route path="/kids" element={<Kids />} />
+            <Route path="/athletic" element={<Athletic />} /> */}
+
           </Routes>
         </div>
       </BrowserRouter>
@@ -96,6 +103,7 @@ function App() {
   } else {
     // Render content for non-authenticated users
     return (
+      <BrowserRouter>
       <>
         <Header
         title="TimelessTrends"
@@ -107,8 +115,10 @@ function App() {
         <Login />
         <ToggleNav />
         <Slideshow />
-        <NewProduct />
+        <Product />
       </>
+  
+      </BrowserRouter>
     );
   }
 }
