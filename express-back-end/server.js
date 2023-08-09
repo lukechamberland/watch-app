@@ -18,18 +18,6 @@ const cors = require("cors");
 const { findOrCreateUser } = require("../db/queries/users");
 
 const { Pool } = require('pg');
-
-const pool = new Pool({
-  user: process.env.DB_USER,
-  host: process.env.DB_HOST,
-  database: process.env.DB,
-  password: process.env.DB_PASS,
-  port: process.env.DB_PORT,
-});
-
-const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
-
-const { Pool } = require('pg');
 const pool = new Pool({
   user: process.env.DB_USER,
   host: process.env.DB_HOST,
