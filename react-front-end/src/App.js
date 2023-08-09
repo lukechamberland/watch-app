@@ -82,6 +82,7 @@ function App() {
               path="/"
               element={
                 <div>
+                  <Header />
                   <Logout />
                   <Slideshow />
                   <ToggleNav />
@@ -89,7 +90,7 @@ function App() {
                 </div>
               }
             />
-        
+
             <Route path="/product/:id" element={<ProductDetails handleClick={handleClick} click={click} allData={[]}/>} />
             <Route path="/newproduct" element={<NewProduct />} />
             <Route path="/updateproduct" element={<UpdateProduct />} />

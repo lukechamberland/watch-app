@@ -24,8 +24,7 @@ function Product() {
     <div class="products">
       {data.map((product) => (
         <div class="product-wrapper">
-           <img class="product-details-image" src={product.image_url}/>
-          <div class="product" onClick={() => handleClick(product.id)}></div>
+           <img class="product-details-image" src={product.image_url} onClick={() => handleClick(product.id)}/>
             <div class="product-details"></div>
             <div class="product-name">{product.name}</div>
             <div class="price-div">

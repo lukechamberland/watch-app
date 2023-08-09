@@ -9,9 +9,12 @@ import Stack from "@mui/material/Stack"
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 import { addToCart, callAddToCart } from './stateHelpers';
+import Header from "./Header"
 
 
 export default function ProfileTabs() {
+  
+
   const [value, setValue] = React.useState('1');
   const [favourites, setFavourites] = useState([]);
   const [userproducts, setUserproducts] = useState([]);
@@ -58,31 +61,16 @@ export default function ProfileTabs() {
         setUserproducts(filteredResults)
       })
     userProducts()
-  };
+  });
 
   useEffect(() => {
     setFavourites(JSON.parse(localStorage.getItem("favourites")))
-    // let userId = sessionStorage.getItem("userId");
-    // axios.get('/api/favourites')
-    //   .then((results) => {
-    //     // const data = (results.data);
-    //     // const mapResults = data.map((element) => {
-    //     //   if(element.user_id == userId) {
-    //     //     return element
-    //     //   }
-    //     // })   
-    //     // const filteredResults = mapResults.filter((result) => result != undefined)
-    //     // setFavourites(filteredResults)
-
-    //   });
-  
     }, []);
 
     const userFavourites = function() {
       const favouriteList = favourites.map((favourite, idx) => 
         <div class="products" key={favourite.name + favourite.price + idx}>
           <div class="product-wrapper">
-          <div class="product" ></div>
             <div class="product-details"></div>
             <img class="product-details-image" src={favourite.image_url}/>
             <div class="product-name">{favourite.name}</div>
@@ -117,7 +105,6 @@ export default function ProfileTabs() {
       const userProducts = userproducts.map((product) => (
         <div class="products">
         <div class="product-wrapper">
-          <div class="product" ></div>
             <div class="product-details"></div>
             <img class="product-details-image" src={product.image_url}/>
             <div class="product-name">{product.name}</div>
@@ -162,6 +149,8 @@ export default function ProfileTabs() {
     }
 
   return (
+    <>
+    <Header />
     <Box sx={{ width: '100%', typography: 'body1' }}>
       <TabContext value={value}>
         <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
@@ -181,5 +170,7 @@ export default function ProfileTabs() {
         <TabPanel value="4">Messages</TabPanel>
       </TabContext>
     </Box>
+    </>
+    
   );
 }
