@@ -5,6 +5,7 @@ import "./App.css";
 import { useAuth0 } from "@auth0/auth0-react";
 import { useEffect, useState, createContext, useContext } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 
 //Import components
 import Product from "./components/Product";
@@ -17,10 +18,10 @@ import NewProduct from "./components/NewProduct";
 import ProfileTabs from "./components/ProfileTabs"
 import UpdateProduct from "./components/UpdateProduct";
 import Cart from "./components/Cart";
-import Header from "./components/Header";
+import Layout from "./components/Layout";
 
 function App() {
-  const { isAuthenticated, loginWithRedirect, logout, user } = useAuth0();
+  const { isAuthenticated, user } = useAuth0();
   console.log(user);
   const [userId, setUserId] = useState(null);
 
@@ -40,32 +41,6 @@ function App() {
         });
     }
   }, [isAuthenticated, user]);
-  /*
-  useEffect (() => {
-      //make a request to a back end router
-      //send over entire user object
-      //backend query user object
-      //if match found send data to front end
-      //set as primary logged in user
-      //if not register user
-      //login_auth = sub
-      //backend will send frontend userid, existing or new 
-      //save userid info in a useContext
-      //second option windows.sessionStorage
-  }, [isAuthenticated])
-  */
-
-  const handleMenuClick = () => {
-    console.log('Menu clicked!');
-  };
-
-  const handleCartClick = () => {
-    console.log('Cart clicked!');
-  };
-
-  const handleProfileClick = () => {
-    console.log('Profile clicked!');
-  };
 
   if (isAuthenticated) {
     // Render content for authenticated users
@@ -78,10 +53,11 @@ function App() {
               path="/"
               element={
                 <div>
-                  <Logout />
-                  <Slideshow />
-                  <ToggleNav />
-                  <Product />
+                  <Layout>
+                    <Logout />
+                    <Slideshow />
+                    <Product />
+                  </Layout>
                 </div>
               }
             />
@@ -105,17 +81,11 @@ function App() {
     return (
       <BrowserRouter>
       <>
-        <Header
-        title="TimelessTrends"
-        logo="/path/to/logo.png"
-        onMenuClick={handleMenuClick}
-        onCartClick={handleCartClick}
-        onProfileClick={handleProfileClick}
-        />
+        <Layout>
         <Login />
-        <ToggleNav />
         <Slideshow />
         <Product />
+        </Layout>
       </>
   
       </BrowserRouter>
