@@ -69,7 +69,7 @@ export default function ProfileTabs() {
           }
         })   
         const filteredResults = mapResults.filter((result) => result != undefined)
-        setUserproducts(filteredResults)
+        setFavourites(filteredResults)
       })
     userProducts()
   });
@@ -117,15 +117,20 @@ export default function ProfileTabs() {
         <div class="products">
         <div class="product-wrapper">
             <div class="product-details"></div>
-            <img class="product-image" src={product.image_url}/>
+            <img class="product-image" src={product.image_url} onClick={() => handleClick(product.id)}/>
             <div class="product-name">{product.name}</div>
             <div class="price-div">
               <h1 class="price"> ${product.price}.00</h1>
             </div>
-            <Stack direction="row" spacing={2}>
+            <div class='buttons'>
+              <button href="/updateproduct" onClick={() => onEdit(product.id, product.image_url, product.description, product.name, product.price)}>EDIT </button>
+              <button onClick={() => onDelete(product.id)}>DELETE</button>
+
+            {/* <Stack direction="row" spacing={2}>
               <Button variant="contained" href="/updateproduct" onClick={() => onEdit(product.id, product.image_url, product.description, product.name, product.price)}>EDIT</Button>
               <Button variant="contained" onClick={() => onDelete(product.id)}>DELETE</Button>
-            </Stack>
+            </Stack> */}
+            </div>
           </div>
         </div>
       ))

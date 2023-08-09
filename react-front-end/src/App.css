@@ -53,11 +53,16 @@ body {
 .title {
   text-align: center;
 }
+
+.buttons {
+  color: red;
+
+}
+
 .products {
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-between;
 }
 
 .product-wrapper {

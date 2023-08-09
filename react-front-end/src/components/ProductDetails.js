@@ -5,6 +5,7 @@ import '../App.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart, faCheck, faXmark, } from './icons';
 import Quantity from './Quantity';
+import Layout from './Layout';
 
 function ProductDetails() {
 
@@ -136,6 +137,8 @@ function ProductDetails() {
   };
 
   return (
+    <>
+    <Layout />
     <div class="product-details-page">
       <img class="product-details-image" src={productDetailsState.image_url}/>
       <div class="about">
@@ -159,6 +162,7 @@ function ProductDetails() {
         </div>
       </div>
     </div>
+    </>
   )
 }
 
