@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { Formik, Field, Form } from 'formik';
 import axios from 'axios'
+import { useNavigate} from 'react-router-dom'
 
 function UpdateProduct() {
   
@@ -8,6 +9,7 @@ function UpdateProduct() {
   const description = window.sessionStorage.getItem('productDesc')
   const name = window.sessionStorage.getItem('productName')
   const price = window.sessionStorage.getItem('productPrice')
+  const navigate = useNavigate()
 
   return (
   <div>
@@ -30,7 +32,8 @@ function UpdateProduct() {
           values.productPrice,
           values.productInventory,
           productId
-        ]);
+        ])
+        navigate('/profile')
         } 
         
       }

@@ -8,6 +8,7 @@ import Button from "@mui/material/Button"
 import Stack from "@mui/material/Stack"
 import axios from 'axios';
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 
 export default function ProfileTabs() {
@@ -15,7 +16,7 @@ export default function ProfileTabs() {
   const [favourites, setFavourites] = useState([]);
   const [userproducts, setUserproducts] = useState([]);
   const [orderhistory, setOrderhistory] = useState([]);
-
+  const navigate = useNavigate();
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -30,9 +31,18 @@ export default function ProfileTabs() {
   }
   const onDelete = (id) => {
     axios.delete(`/api/products/${id}`, id)
-      .then((id) => {
-        console.log("deleted product:", id)
+    axios.get('/api/products')
+      .then((results) => {
+        let userId = sessionStorage.getItem("userId");
+        const mapResults = results.data.map((element) => {
+          if(element.user_id == userId) {
+            return element
+          }
+        })   
+        const filteredResults = mapResults.filter((result) => result != undefined)
+        setUserproducts(filteredResults)
       })
+    userProducts()
   };
 
   useEffect(() => {
@@ -57,6 +67,7 @@ export default function ProfileTabs() {
           <div class="product-wrapper">
           <div class="product" ></div>
             <div class="product-details"></div>
+            <img class="product-details-image" src={favourite.image_url}/>
             <div class="product-name">{favourite.name}</div>
             <div class="price-div">
               <h1 class="price"> ${favourite.price}.00</h1>
@@ -91,6 +102,7 @@ export default function ProfileTabs() {
         <div class="product-wrapper">
           <div class="product" ></div>
             <div class="product-details"></div>
+            <img class="product-details-image" src={product.image_url}/>
             <div class="product-name">{product.name}</div>
             <div class="price-div">
               <h1 class="price"> ${product.price}.00</h1>
