@@ -8,7 +8,6 @@ import Button from "@mui/material/Button"
 import Stack from "@mui/material/Stack"
 import axios from 'axios';
 import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
 
 
 export default function ProfileTabs() {
@@ -16,7 +15,6 @@ export default function ProfileTabs() {
   const [favourites, setFavourites] = useState([]);
   const [userproducts, setUserproducts] = useState([]);
   const [orderhistory, setOrderhistory] = useState([]);
-  const navigate = useNavigate();
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
