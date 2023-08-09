@@ -3,11 +3,11 @@ import axios from 'axios';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-function Product() {
+function Mens() {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    axios.get('/api/products')
+    axios.get('/api/products/mens')
     .then((result) => {
       console.log(result);
       setData(result.data);
@@ -21,12 +21,14 @@ function Product() {
   }
 
   return (
+
     <div class="products">
+      <h1>Mens Watches</h1>
       {data.map((product) => (
         <div class="product-wrapper">
-           <img class="product-details-image" src={product.image_url}/>
           <div class="product" onClick={() => handleClick(product.id)}></div>
             <div class="product-details"></div>
+            <img class="product-details-image" src={product.image_url}/>
             <div class="product-name">{product.name}</div>
             <div class="price-div">
               <h1 class="price"> ${product.price}.00</h1>
@@ -37,4 +39,4 @@ function Product() {
   )
 }
 
-export default Product;
+export default Mens;

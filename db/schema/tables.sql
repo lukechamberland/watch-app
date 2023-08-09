@@ -29,7 +29,8 @@ CREATE TABLE products (
   name VARCHAR(255) NOT NULL, 
   price INTEGER NOT NULL DEFAULT 0, 
   inventory INTEGER DEFAULT 1, 
-  available BOOLEAN DEFAULT TRUE
+  available BOOLEAN DEFAULT TRUE, 
+  category VARCHAR (255) NOT NULL
 );
 
 CREATE TABLE favourites (
@@ -39,19 +40,7 @@ CREATE TABLE favourites (
   is_active BOOLEAN DEFAULT TRUE
 );
 
-ALTER TABLE order_products ADD order_id INTEGER REFERENCES orders(id);
 
-ALTER TABLE orders
-ADD order_date DATE;
-
-ALTER TABLE products
-ADD favourite BOOLEAN DEFAULT FALSE;
-
-ALTER TABLE products
-ADD inventory INTEGER;
-
-ALTER TABLE products
-ADD available BOOLEAN DEFAULT TRUE;
 
 
 

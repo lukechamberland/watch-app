@@ -1,8 +1,11 @@
 import React from 'react';
 import { Formik, Field, Form } from 'formik';
 import axios from 'axios'
+import { useNavigate} from 'react-router-dom'
 
 function NewProduct() {
+
+  const navigate = useNavigate()
 
   return (
   <div>
@@ -18,6 +21,7 @@ function NewProduct() {
         async (values) => {
         const userId = window.sessionStorage.getItem('userId')
         const data = await axios.post("/newproduct", [userId, values.productImage, values.productDescription, values.productName, values.productPrice, 1, true])
+        navigate('/profile')
         }
       }
     >
