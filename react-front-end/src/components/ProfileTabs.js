@@ -3,16 +3,16 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import Tab from '@mui/material/Tab';
 import TabContext from '@mui/lab/TabContext';
-import TabList from '@mui/lab/TabList';
+import Tabs from "@mui/material/Tabs"
 import TabPanel from '@mui/lab/TabPanel';
 import Button from "@mui/material/Button"
-import Stack from "@mui/material/Stack"
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 import { addToCart, callAddToCart } from './stateHelpers';
 import Layout from "./Layout"
 import { useNavigate } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
+import '../App.css'
 
 
 export default function ProfileTabs() {
@@ -37,6 +37,7 @@ export default function ProfileTabs() {
     const productDesc = window.sessionStorage.setItem('productDesc', description)
     const productName = window.sessionStorage.setItem('productName', name)
     const productPrice = window.sessionStorage.setItem('productPrice', price)
+    navigate('/updateproduct')
   }
 
   const handleClick = (id) => {
@@ -95,10 +96,10 @@ export default function ProfileTabs() {
             <div class="product-name">{favourite.name}</div>
             <div class="price-div">
               <h1 class="price"> ${favourite.price}.00</h1>
-              <button class="favourite-delete-button" onClick={() => deleteFavourite(favourite)}>Delete</button>
+              <button class="favourite-delete-button" onClick={() => deleteFavourite(favourite)}>DELETE</button>
             </div>
             <div class="PDinventory">
-              <div class="in-stock">{favourite.inventory} in stock</div> <button class="add-to-cart" >Add to cart</button>
+              <div class="in-stock">{favourite.inventory} in stock</div> <button class="add-to-cart" >ADD TO CART</button>
             </div>
           </div>
         </div>
@@ -141,15 +142,11 @@ export default function ProfileTabs() {
             <div class='buttons'>
               <button class="editbtn" href="/updateproduct" onClick={() => onEdit(product.id, product.image_url, product.description, product.name, product.price)}>EDIT </button>
               <button class="deletebtn" onClick={() => onDelete(product.id)}>DELETE</button>
-
-            {/* <Stack direction="row" spacing={2}>
-              <Button variant="contained" href="/updateproduct" onClick={() => onEdit(product.id, product.image_url, product.description, product.name, product.price)}>EDIT</Button>
-              <Button variant="contained" onClick={() => onDelete(product.id)}>DELETE</Button>
-            </Stack> */}
             </div>
           </div>
         </div>
       ))
+
       return userProducts
     }
 
@@ -179,31 +176,42 @@ export default function ProfileTabs() {
       ))
       return orderHistory
     }
+    const styles = {
+      tabs: {
+        color: 'white',
+      }, 
+      panel: {
+        display: 'flex', 
+        'flex-direction': 'row',
+        'flex-wrap': 'wrap',
+        'justify-content': 'center',
+      }
+    }
 
   return (
     <>
     <Layout>
     <Box sx={{ width: '100%', typography: 'body1' }}>
       <TabContext value={value}>
-        <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-          <TabList onChange={handleChange} aria-label="lab API tabs example">
-            <Tab label="My Ads" value="1" />
-            <Tab label="Favourites" value="2" />
-            <Tab label="Order History" value="3" />
-            <Tab label="Messages" value="4" />
-          </TabList>
+        <Box sx={{ borderBottom: 1, borderColor: 'white' }}>
+          <Tabs centered={true} onChange={handleChange} aria-label="lab API tabs example">
+            <Tab style={styles.tabs} label="My Ads" value="1"/>
+            <Tab style={styles.tabs} label="Favourites" value="2" />
+            <Tab style={styles.tabs} label="Order History" value="3" />
+          </Tabs>
         </Box>
         <TabPanel value="1">
+          <div style={styles.panel}>
           {userProducts()}
-          <Button variant="contained" href='/newproduct'> Add new Product </Button>
+          </div>
+          <button class='newproductbtn' href='/newproduct'> ADD NEW PRODUCT </button>
           </TabPanel>
-        <TabPanel value="2">{userFavourites()}</TabPanel>
+        <TabPanel style={styles.panel} value="2">{userFavourites()}</TabPanel>
         <TabPanel value="3">{orderHistory()}</TabPanel>
-        <TabPanel value="4">Messages</TabPanel>
       </TabContext>
     </Box>
     </Layout>
     </>
-    
   );
+  
 }

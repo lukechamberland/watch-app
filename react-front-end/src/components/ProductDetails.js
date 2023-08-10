@@ -75,7 +75,7 @@ function ProductDetails() {
   const isCartEmpty = function() {
     if (emptyCart) {
       return (
-        <div>Add to cart</div>
+        <div>ADD TO CART</div>
       )
     } else {
       return (

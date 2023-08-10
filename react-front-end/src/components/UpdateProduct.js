@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { Formik, Field, Form } from 'formik';
 import axios from 'axios'
 import { useNavigate} from 'react-router-dom'
+import Layout from './Layout';
 
 function UpdateProduct() {
   
@@ -13,7 +14,8 @@ function UpdateProduct() {
 
   return (
   <div>
-    <h1>Edit Product</h1>
+    <Layout>
+    <h1 class='title'>Edit Product</h1>
     <Formik
       initialValues={{
         productImage: image,
@@ -38,7 +40,7 @@ function UpdateProduct() {
         
       }
     >
-      <Form>
+      <Form class='productForm'>
         <label htmlFor="productName">Product Name</label>
         <Field class='field' id="productName" name="productName" />
 
@@ -68,9 +70,10 @@ function UpdateProduct() {
           type='number'
         />
 
-        <button type="submit">Submit</button>
+        <button class='submitbtn' type="submit">Submit</button>
       </Form>
     </Formik>
+    </Layout>
   </div>
   )
 };

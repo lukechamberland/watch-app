@@ -1,7 +1,8 @@
 import React from 'react';
 import { Formik, Field, Form } from 'formik';
-import axios from 'axios'
-import { useNavigate} from 'react-router-dom'
+import axios from 'axios';
+import { useNavigate} from 'react-router-dom';
+import Layout from './Layout';
 
 function NewProduct() {
 
@@ -9,7 +10,8 @@ function NewProduct() {
 
   return (
   <div>
-    <h1>Add A Product</h1>
+    <Layout>
+    <h1 class='title'>Add A Product</h1>
     <Formik
       initialValues={{
         productImage: '',
@@ -25,7 +27,7 @@ function NewProduct() {
         }
       }
     >
-      <Form>
+      <Form class='productForm'>
         <label htmlFor="productName">Product Name</label>
         <Field class='field' id="productName" name="productName" />
 
@@ -47,10 +49,11 @@ function NewProduct() {
           name="productImage"
         />
 
-        <button type="submit">Submit</button>
+        <button class='submitbtn' type="submit">Submit</button>
 
       </Form>
     </Formik>
+    </Layout>
   </div>
   )
 };
