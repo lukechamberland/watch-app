@@ -5,6 +5,7 @@ import '../App.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart, faCheck, faXmark, } from './icons';
 import Quantity from './Quantity';
+import Layout from './Layout';
 import { useAuth0 } from "@auth0/auth0-react";
 
 
@@ -144,6 +145,8 @@ function ProductDetails() {
   };
 
   return (
+    <>
+    <Layout />
     <div class="product-details-page">
       <img class="product-details-image" src={productDetailsState.image_url}/>
       <div class="about">
@@ -167,6 +170,7 @@ function ProductDetails() {
         </div>
       </div>
     </div>
+    </>
   )
 }
 
