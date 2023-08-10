@@ -6,9 +6,16 @@ import Divider from '@mui/material/Divider';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
+import { useNavigate } from 'react-router-dom';
 
 export default function ToggleNav({ isOpen, toggleDrawer }) {
     const anchor = 'left';
+
+    const navigate = useNavigate();
+
+    const changeNavigation = function(route) {
+      navigate(route);
+    }
   
     const list = (
       <Box
@@ -20,7 +27,7 @@ export default function ToggleNav({ isOpen, toggleDrawer }) {
         <List>
           {['Mens', 'Womens', 'Kids', 'Athletic'].map((text, index) => (
             <ListItem key={text} disablePadding>
-              <ListItemButton>
+              <ListItemButton onClick={() => changeNavigation(`/${text.toLowerCase()}`)}>
                 <ListItemText primary={text} />
               </ListItemButton>
             </ListItem>
