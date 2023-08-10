@@ -5,8 +5,11 @@ import '../App.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart, faCheck, faXmark, } from './icons';
 import Quantity from './Quantity';
+import { useAuth0 } from "@auth0/auth0-react";
+
 
 function ProductDetails() {
+  const { isAuthenticated, loginWithRedirect  } = useAuth0();
 
   const { id } = useParams();
 
@@ -55,6 +58,11 @@ function ProductDetails() {
   }
 
   const callAddToCart = function(pd, num) {
+    if (!isAuthenticated) {
+      loginWithRedirect(); 
+      return;
+    }
+
     for (let i = 1; i <= num; i++) {
       addToCart(pd);
     }
