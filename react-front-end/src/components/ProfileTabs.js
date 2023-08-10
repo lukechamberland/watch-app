@@ -168,8 +168,8 @@ export default function ProfileTabs() {
     }
 
   return (
+    <Layout>
     <>
-    <Layout />
     <Box sx={{ width: '100%', typography: 'body1' }}>
       <TabContext value={value}>
         <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
@@ -190,6 +190,6 @@ export default function ProfileTabs() {
       </TabContext>
     </Box>
     </>
-    
+    </Layout>  
   );
 }
