@@ -95,7 +95,14 @@ export default function ProfileTabs() {
           </div>
         </div>
       )
-      return favouriteList
+      const noFavourites = (
+        <div>You currently have no favourite products.</div>
+      )
+      if (favourites.length != 0) {
+        return favouriteList;
+      } else {
+        return noFavourites;
+      }
     }
 
     useEffect(() => {
