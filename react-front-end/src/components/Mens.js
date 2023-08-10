@@ -10,7 +10,6 @@ function Mens() {
   useEffect(() => {
     axios.get('/api/products/mens')
     .then((result) => {
-      console.log(result);
       setData(result.data);
     })
   }, []);
@@ -23,7 +22,7 @@ function Mens() {
 
   return (
     <>
-    <Layout />
+    <Layout>
     <h1 class="title">Mens Watches</h1>
     <div class="products">
       {data.map((product) => (
@@ -37,6 +36,7 @@ function Mens() {
           </div>
       ))}
     </div>
+    </Layout>
     </>
     
   )

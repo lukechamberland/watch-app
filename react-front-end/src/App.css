@@ -4,8 +4,9 @@
 }
 
 body {
-  background-color: rgba(0, 0, 0, 0.285);
+  background-color: #797e7e;
   margin: 0;
+  color: white;
 }
 
 .inner-div {
@@ -55,15 +56,34 @@ body {
   text-align: center;
 }
 
-.buttons {
-  color: red;
+.editbtn {
+  background-color: black;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+.deletebtn {
+  background-color: red;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
 
 }
 
 .products {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .product-wrapper {
@@ -135,8 +155,6 @@ body {
 }
 
 .product-details-image {
-  border-style: solid;
-  border-color: black;
   margin-left: 100px;
   border-radius: 10px;
   background-size: cover;
@@ -234,13 +252,13 @@ body {
 .in-stock {
   font-size: 30px;
   font-weight: 150;
-  margin-top: 20px
+  margin-top: 20px;
+  margin-right: 10px;
 }
 
 .PDinventory {
   display: flex;
   justify-content: space-between;
-  margin-top: 100px;
 }
 
 .add-to-cart {
@@ -313,6 +331,12 @@ label {
 
 .cart {
   margin-top: 100px;
+}
+
+.empty-cart {
+  text-align: center;
+  margin-top: 90px;
+  margin-bottom: 90px
 }
 
 .cart-product-div:hover {

@@ -57,7 +57,7 @@ const styles = {
     justifyContent: 'space-between',
     alignItems: 'center',
     padding: '10px 20px',
-    backgroundColor: '#f0f0f0',
+    backgroundColor: '#f8f8f8',
   },
   left: {
     flex: 1,
@@ -95,7 +95,8 @@ const styles = {
     marginRight: '10px'
   },
   title: {
-    margin: 0
+    margin: 0,
+    color: 'black',
   },
   cartButton: {
     marginRight: '10px',

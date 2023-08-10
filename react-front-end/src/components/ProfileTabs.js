@@ -59,21 +59,21 @@ export default function ProfileTabs() {
     userProducts()
   };
 
-  useEffect(() => {
-    let userId = sessionStorage.getItem("userId");
-    axios.get('/api/favourites')
-      .then((results) => {
-        let userId = sessionStorage.getItem("userId");
-        const mapResults = results.data.map((element) => {
-          if(element.user_id == userId) {
-            return element
-          }
-        })   
-        const filteredResults = mapResults.filter((result) => result != undefined)
-        setFavourites(filteredResults)
-      })
-    userProducts()
-  })
+  // useEffect(() => {
+  //   let userId = sessionStorage.getItem("userId");
+  //   axios.get('/api/favourites')
+  //     .then((results) => {
+  //       let userId = sessionStorage.getItem("userId");
+  //       const mapResults = results.data.map((element) => {
+  //         if(element.user_id == userId) {
+  //           return element
+  //         }
+  //       })   
+  //       const filteredResults = mapResults.filter((result) => result != undefined)
+  //       setFavourites(filteredResults)
+  //     })
+  //   userProducts()
+  // })
 
   useEffect(() => {
     setFavourites(JSON.parse(localStorage.getItem("favourites")))
@@ -139,8 +139,8 @@ export default function ProfileTabs() {
               <h1 class="price"> ${product.price}.00</h1>
             </div>
             <div class='buttons'>
-              <button href="/updateproduct" onClick={() => onEdit(product.id, product.image_url, product.description, product.name, product.price)}>EDIT </button>
-              <button onClick={() => onDelete(product.id)}>DELETE</button>
+              <button class="editbtn" href="/updateproduct" onClick={() => onEdit(product.id, product.image_url, product.description, product.name, product.price)}>EDIT </button>
+              <button class="deletebtn" onClick={() => onDelete(product.id)}>DELETE</button>
 
             {/* <Stack direction="row" spacing={2}>
               <Button variant="contained" href="/updateproduct" onClick={() => onEdit(product.id, product.image_url, product.description, product.name, product.price)}>EDIT</Button>
@@ -182,7 +182,7 @@ export default function ProfileTabs() {
 
   return (
     <>
-    <Layout />
+    <Layout>
     <Box sx={{ width: '100%', typography: 'body1' }}>
       <TabContext value={value}>
         <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
@@ -202,6 +202,7 @@ export default function ProfileTabs() {
         <TabPanel value="4">Messages</TabPanel>
       </TabContext>
     </Box>
+    </Layout>
     </>
     
   );

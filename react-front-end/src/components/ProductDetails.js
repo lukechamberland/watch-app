@@ -31,8 +31,6 @@ function ProductDetails() {
       });
   }, []);
 
-  console.log(productDetailsState)
-
   const isAvailable = function () {
     if (productDetailsState.available) {
       return (
@@ -146,7 +144,7 @@ function ProductDetails() {
 
   return (
     <>
-    <Layout />
+    <Layout>
     <div class="product-details-page">
       <img class="product-details-image" src={productDetailsState.image_url}/>
       <div class="about">
@@ -170,6 +168,7 @@ function ProductDetails() {
         </div>
       </div>
     </div>
+    </Layout>
     </>
   )
 }
