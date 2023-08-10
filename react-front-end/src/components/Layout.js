@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Header from './Header';
 import ToggleNav from './ToggleNav';
 import logo from '../images/logo.png';
+import Footer from './Footer';
 
 const Layout = ({ children }) => {
   const [isNavOpen, setNavOpen] = useState(false);
@@ -18,6 +19,7 @@ const Layout = ({ children }) => {
       />
       <ToggleNav isOpen={isNavOpen} toggleDrawer={setNavOpen} />
       {children}
+      <Footer />
     </div>
   );
 };
