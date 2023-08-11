@@ -10,7 +10,7 @@ const Footer = () => {
       background: '#f8f8f8',
       padding: '20px',
       borderTop: '1px solid #e7e7e7',
-      bottom: '0'
+      bottom: '0',
     },
     link: {
       margin: '0 10px',

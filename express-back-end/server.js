@@ -147,7 +147,6 @@ app.get("/api/orders", (req, res) => {
       res.json(result);
     })
     .catch((error) => {
-      console.log("test");
       res.status(500).json({ error: "Internal Server Error" });
     });
 });
@@ -164,10 +163,8 @@ app.get("/api/users", (req, res) => {
 
 app.post("/api/users", (req, res) => {
   const user = req.body;
-  console.log("Received user:", user);
   findOrCreateUser(user)
     .then((userId) => {
-      console.log("Responding with userId:", userId);
       res.json({ userId });
     })
     .catch((err) => {

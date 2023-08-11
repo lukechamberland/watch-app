@@ -19,7 +19,7 @@ const images = [
   {
     label: "San Francisco – Oakland Bay Bridge, United States",
     imgPath:
-      "https://images.unsplash.com/photo-1537944434965-cf4679d1a598?auto=format&fit=crop&w=400&h=250&q=60",
+      "https://www.seikowatches.com/ca-en/-/media/Images/Canada/Seiko/Home/TOP_MV_desktop_03_astron.jpg",
   },
   {
     label: "Bird",
@@ -56,20 +56,7 @@ function Slideshow() {
   };
 
   return (
-    <Box sx={{ maxWidth: 400, flexGrow: 1 }}>
-      <Paper
-        square
-        elevation={0}
-        sx={{
-          display: "flex",
-          alignItems: "center",
-          height: 50,
-          pl: 2,
-          bgcolor: "background.default",
-        }}
-      >
-        <Typography>{images[activeStep].label}</Typography>
-      </Paper>
+    <Box sx={{maxWidth: 400,flexGrow: 1 }}>
       <AutoPlaySwipeableViews
         axis={theme.direction === "rtl" ? "x-reverse" : "x"}
         index={activeStep}
@@ -84,7 +71,7 @@ function Slideshow() {
                 sx={{
                   height: 255,
                   display: "block",
-                  maxWidth: 400,
+                  //maxWidth: 400,
                   overflow: "hidden",
                   width: "100%",
                 }}

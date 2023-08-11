@@ -35,7 +35,6 @@ function Cart() {
   }
 
   const getTotalPrice = function (state) {
-    console.log(state)
     let amount = 0;
     for (let product of state) {
       amount += product.price;
@@ -110,8 +109,18 @@ function Cart() {
       .catch((error) => console.error('An error occurred:', error));
   }
 
-  return (
-    <Layout>
+  const isCartEmpty = function() {
+    if (!cartState) {
+      return (
+        <>
+        <Layout>
+        <div class="empty-cart">Your cart is empty.</div>
+        </Layout>
+        </>
+      )
+    } else if (cartState.length != 0) {
+      return (
+        <Layout>
       <div className="cart">
         {cartState.map((product) => (
           <div className="cart-product-div" onClick={() => showProduct(product.id)}>
@@ -122,12 +131,12 @@ function Cart() {
                 ${product.price}.00
               </div>
             </div>
-            <div id="cart-heart" className="cart-heart" onClick={(event) => {
+            {/* <div id="cart-heart" className="cart-heart" onClick={(event) => {
               event.stopPropagation()
               favProduct(product)
             }}>
               <FontAwesomeIcon icon={faHeart} />
-            </div>
+            </div> */}
             <div className="trash-can" onClick={(event) => {
               event.stopPropagation();
               removeProduct(product)
@@ -135,7 +144,8 @@ function Cart() {
               <FontAwesomeIcon icon={faTrash} />
             </div>
           </div>
-        ))}
+        ))
+        }
         <div className="final-items">
           <div className="total-price">
             Total price + GST: <div className="final-price">${getTotalPrice(cartState)}</div>
@@ -144,6 +154,20 @@ function Cart() {
         </div>
       </div>
     </Layout>
+      )
+    } else {
+      return (
+        <>
+        <Layout>
+        <div class="empty-cart">Your cart is empty.</div>
+        </Layout>
+        </>
+      )
+    }
+  }
+
+  return (
+    <div>{isCartEmpty()}</div>
   );
 }
 

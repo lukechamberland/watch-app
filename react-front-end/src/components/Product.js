@@ -9,7 +9,6 @@ function Product() {
   useEffect(() => {
     axios.get('/api/products')
     .then((result) => {
-      console.log(result);
       setData(result.data);
     })
   }, []);
