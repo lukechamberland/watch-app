@@ -1,46 +1,38 @@
-# React + Express No-Fluff Boilerplate
+## Final Project
 
-A boilerplate project for anyone interested in making a project that uses React and Express.
+# Introduction
 
-This repository is a bootleg of @NimaBoscarino's [React Rails Boilerplate](https://github.com/NimaBoscarino/react-rails-boilerplate). It uses the same React app, but replaces the Rails server with an Express server.
+This watch retail platform combines modern convenience with stylish user experience, utilizing fundamental UI principles, state management, and Material-UI for a sleek appearance. The integration of Auth0 provides secure, user-friendly sign-in options. This demonstrates a comprehensive understanding of web development concepts, including the use of Express.js, local APIs, React, and authentication mechanisms.  
 
-Note! This boilerplate has _no fluff_! That means that there's nothing set up for you to do authentication stuff, there's no Redux stuff, and there's no React Router stuff. On the Express end, there is no session storage or database connection.
+## Overview
 
-The main important bit is that the React project has `proxy` set to `localhost:8080` in the `package.json` file, and that the Express app listens to port 8080 in `server.js`. Take a look!
+This project is a modern style web application, which main purpose is to sell and create watches.  The application integrates Javascript, React, Express.js, Auth0 and Material-UI.  It allows users to simply log in through their google account.  The home page displays the main products, and the other pages consist mainly of othe groupings of products, this includes mens, womens, kids and athletics.  
 
-You can (and perhaps should) rename the directories `express-back-end` and `react-front-end` if you want-- The name doesn't matter.
+## Key features
+Some key features include but are not limited to:
 
-## Running the projects
+- users are prompted to login through Auth0 login system
+- users can favourite and unfavourite products
+- users can select quantity to add to cart
+- users can view order history
 
-You need **TWO** terminal windows/tabs for this (or some other plan for running two Node processes).
+# Getting started  
+Breif overview of how to start the application. Before following these instructions, make sure you have Node.js installed.
 
-In one terminal, `cd` into `react-front-end`. Run `npm install` or `yarn` to install the dependencies. Then run `npm start` or `yarn start`, and go to `localhost:3000` in your browser.
+# Create the database
 
-In the other terminal, `cd` into `express-back-end`. Run `npm install` or `yarn` to install the dependencies, then `npm start` or `yarn start` to launch the server.
+- In your terminal, begin a new psql session by typing: psql
+- Once in psql, create the database by typing: CREATE DATABASE watchdb
+- Then, you can exit your psql by typing: \q
+- Finally, seed the database by typing: psql -U postgres -d watchdb -f tables.sql
+- Lastly, add data to the tables by running:  psql -U postgres -d watchdb -f seeds.sql
 
-In the browser, you can click on the button and see the data get loaded.
+# Clone the repository
 
-If this doesn't work, please message me!
+Clone this repository by simply typing in your terminal: 'git clone git@github.com:lukechamberland/watch-app.git'
 
-## Next steps
+Once this is complete you can now cd into the repository by typing: 'cd watch-app'
 
-From here, you can start working on your project!
+Once in this repository you can start the back end server by first changing to that directory: 'cd express-back-end' then run 'npm install' to install all necessary dependencies, and lastly 'npm start'.  This will start the back end server.
 
-As soon as the dependencies are installed, your Express server can serve JSON and static assets (like images) in response to API calls from the React app. You can get started on developing your React app, routing plan, etc. right away! Any request that isn't handled by React is passed on to the Express server. That means that you can call a route like `/api/users` from React using `fetch`, `axios`, or something else, and Express will receive it as though they originated from the same app. For routing, best practice is to namespace all of your data routes to `/api`, so that they don't clash with other routing schemes, like React Router.
-
-At some point, you'll likely want to install and configure a database driver for Postgres or MongoDB-- Refer to past projects for hints on how to do this.
-
-And don't forget to update the README!
-
-## Example Projects
-
-You might want to look at examples of projects that have used this boilerplate for hints on how to extend it. Here are a few:
-
-* [Later Cart](https://github.com/bonitac/later-cart)
-* [Buddi.io](https://github.com/Danny-Tran/buddi.io)
-
-If you'd like your project added to the list, please shoot me a message.
-
-## Contact
-
-Please contact me on Slack (@garrettgsb) or Nima at `nima@lighthouselabs.com` if you have any questions, requests, or feedback, or post an issue to this repo. If you are using the boilerplate, I'd love to hear from you as well!
+Now, open a new tab in your terminal in the watch-app directory.  This time, locate your front end directory: 'cd react-front-end'.  Now install all depencies in this directory 'npm install' and start the server 'npm start'.  This will take you to the application. 
