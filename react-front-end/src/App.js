@@ -8,13 +8,12 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 //Import components
 import Product from "./components/Product";
-import Slideshow from "./components/Slideshow";
 import ProductDetails from "./components/ProductDetails";
 import NewProduct from "./components/NewProduct";
 import ProfileTabs from "./components/ProfileTabs"
 import UpdateProduct from "./components/UpdateProduct";
 import Cart from "./components/Cart";
-import Layout from "./components/Layout";
+import HomeLayout from "./components/HomeLayout";
 import Mens from "./components/Mens";
 import Womens from "./components/Womens";
 import Athletic from "./components/Athletic";
@@ -52,10 +51,9 @@ function App() {
               path="/"
               element={
                 <div>
-                  <Layout>
-                    <Slideshow />
+                  <HomeLayout>
                     <Product />
-                  </Layout>
+                  </HomeLayout>
                 </div>
               }
             />
@@ -85,10 +83,9 @@ function App() {
               path="/"
               element={
                 <div>
-                  <Layout>
-                    <Slideshow />
+                  <HomeLayout>
                     <Product />
-                  </Layout>
+                  </HomeLayout>
                 </div>
               }
             />

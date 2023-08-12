@@ -5,29 +5,28 @@ import SwipeableViews from "react-swipeable-views";
 import { autoPlay } from "react-swipeable-views-utils";
 
 import slideshow1 from '../images/slideshow1.jpg';
+import slideshow2 from '../images/slideshow2.jpg';
+import slideshow3 from '../images/slideshow3.jpg';
+import slideshow4 from '../images/slideshow4.jpg';
 
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
-
-// need query to get image labels and urls
 
 const images = [
   {
     imgPath:
-      "https://www.seikowatches.com/ca-en/-/media/Images/Canada/Seiko/Home/TOP_MV_desktop_03_astron.jpg",
+      slideshow1,
   },
   {
     imgPath:
-    slideshow1,
+    slideshow2,
   },
   {
-    label: "Bali, Indonesia",
     imgPath:
-      "https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=400&h=250",
+      slideshow3,
   },
   {
-    label: "Goč, Serbia",
     imgPath:
-      "https://images.unsplash.com/photo-1512341689857-198e7e2f3ca8?auto=format&fit=crop&w=400&h=250&q=60",
+      slideshow4,
   },
 ];
 
@@ -52,7 +51,7 @@ function Slideshow() {
               <Box
                 component="img"
                 sx={{
-                  height: 256,
+                  height: 512,
                   display: "block",
                   overflow: "hidden",
                   width: "100%",

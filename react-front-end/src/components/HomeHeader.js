@@ -1,11 +1,11 @@
 import React from 'react';
-import cartIcon from '../images/cart.png';
-import profileIcon from '../images/profile.png';
+import cartwhite from '../images/cartwhite.png';
+import profilewhite from '../images/profilewhite.png';
 import { Link } from 'react-router-dom';
 import { useAuth0 } from "@auth0/auth0-react";
 import whitecrown from '../images/whitecrown.png';
 
-const Header = (props) => {
+const HomeHeader = (props) => {
   const { isAuthenticated, loginWithRedirect, logout } = useAuth0();
 
   const userLogout = () => {
@@ -37,10 +37,10 @@ const Header = (props) => {
       </div>
       <div style={styles.right}>
         <Link to="/cart" style={styles.cartButton} onClick={handleLinkClick}>
-          <img src={cartIcon} alt="Cart" style={styles.icon} />
+          <img src={cartwhite} alt="Cart" style={styles.icon} />
         </Link>
         <Link to="/profile" style={styles.profileButton} onClick={handleLinkClick}>
-			    <img src={profileIcon} alt="Profile" style={styles.icon} />
+			    <img src={profilewhite} alt="Profile" style={styles.icon} />
         </Link>
         {isAuthenticated ? (
           <button style={styles.logoutButton} onClick={userLogout}>Logout</button>
@@ -58,9 +58,10 @@ const styles = {
     justifyContent: 'space-between',
     alignItems: 'center',
     padding: '10px 0',
+    position: 'absolute',
     width: '100%',
     zIndex: '1',
-    backgroundColor: '#1A1A1A',
+    backgroundColor: 'rgba(0, 0, 0, 0.3)',
   },
   left: {
     flex: 1,
@@ -134,4 +135,4 @@ const styles = {
   },
 };
 
-export default Header;
+export default HomeHeader;
