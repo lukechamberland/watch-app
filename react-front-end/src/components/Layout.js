@@ -11,7 +11,7 @@ const Layout = ({ children }) => {
   };
 
   return (
-    <div>
+    <div style={styles.grid}>
       <Header
         title="TimelessTrends"
         logo={logo}
@@ -23,5 +23,14 @@ const Layout = ({ children }) => {
     </div>
   );
 };
+
+const styles = {
+  grid: {
+    display: 'grid',
+    gridTemplateRows: 'auto 1fr auto',
+    gridTemplateColumns: '100%',
+    minHeight: '100vh',
+  },
+}
 
 export default Layout;
