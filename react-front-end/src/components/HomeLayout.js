@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import Header from './Header';
+import HomeHeader from './HomeHeader';
 import ToggleNav from './ToggleNav';
 import logo from '../images/logo.png';
 import Footer from './Footer';
+import Slideshow from './Slideshow';
 
-const Layout = ({ children }) => {
+const HomeLayout = ({ children }) => {
   const [isNavOpen, setNavOpen] = useState(false);
   const handleMenuClick = () => {
     setNavOpen(!isNavOpen);
@@ -12,12 +13,13 @@ const Layout = ({ children }) => {
 
   return (
     <div style={styles.grid}>
-      <Header
+      <HomeHeader
         title="TimelessTrends"
         logo={logo}
         toggleDrawer={handleMenuClick}
       />
       <ToggleNav isOpen={isNavOpen} toggleDrawer={setNavOpen} />
+      <Slideshow />
       {children}
       <Footer />
     </div>
@@ -26,6 +28,7 @@ const Layout = ({ children }) => {
 
 const styles = {
   grid: {
+    position: 'relative',
     display: 'grid',
     gridTemplateRows: 'auto 1fr auto',
     gridTemplateColumns: '100%',
@@ -33,4 +36,4 @@ const styles = {
   },
 }
 
-export default Layout;
+export default HomeLayout;

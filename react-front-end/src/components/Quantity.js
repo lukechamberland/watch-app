@@ -30,9 +30,9 @@ function Quantity(props) {
 
   return (
     <div class="quantity-layout">
-      <button class="quantity-button" onClick={() => add()}>+</button>
-      <div class="number">{quantity}</div>
       <button class="quantity-button" onClick={() => subtract()}>-</button>
+      <div class="number">{quantity}</div>
+      <button class="quantity-button" onClick={() => add()}>+</button>
     </div>
   )
 }

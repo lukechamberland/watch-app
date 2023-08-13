@@ -95,9 +95,8 @@ body {
 }
 
 .product {
-  margin-left: 10px;
+  margin-left: 15px;
   border-radius: 10px;
-  /* background-image: url('images/silver-watch.jpg'); */
   background-size: cover;
   background-position: center;
   width: 200px;
@@ -163,9 +162,10 @@ body {
 }
 
 .product-details-page {
+  margin: 15px;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: space-evenly;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
@@ -372,7 +372,7 @@ label {
 
 .cart-image {
   height: 275px;
-  width: 275px;
+  width: 200px;
   margin-top: 15px;
   margin-right: 15px;
   color: white;
@@ -485,3 +485,11 @@ label {
   background-color: rgb(144, 144, 144);
 }
 
+.empty-cart {
+  font-size: 30px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.PDfavourite:hover {
+  color: red;
+}

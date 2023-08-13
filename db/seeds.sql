@@ -10,25 +10,23 @@ VALUES
   (5, 'https://www.bell.ca/Styles/images/109452_Apple_Watch_SE2_40mm_Strlite_Sprt_Bnd_lrg1.png', 'Second Generation', 'Apple Watch SE', 250, 2, 'true', 'athletic'),
   (7, 'https://www.nixon.com/cdn/shop/files/A1057-1031-view1_e9cc997a-e3cb-41e3-8269-711541168606.png?v=1684461002', 'All Black', 'Porter', 190, 4, 'true', 'mens');
 
-  INSERT INTO order_products (product_id, quantity, order_id)
+INSERT INTO order_products (product_id, quantity, order_id)
 VALUES
-  (11, 2, 4),
-  (12, 1, 5),
-  (13, 3, 6),
-  (14, 1, 6);
+  (19, 2, 4),
+  (20, 1, 5),
+  (21, 3, 6),
+  (22, 1, 6);
 
-  INSERT INTO orders (user_id, subtotal_amount, tax_amount, total_amount, order_date)
+INSERT INTO orders (user_id, subtotal_amount, tax_amount, total_amount, order_date)
 VALUES
   (2, 220, 22, 242, '2023-07-14'),
   (4, 240, 24, 264, '2023-07-15'),
-  (7, 320, 32, 352, '2023-07-16');
+  (3, 320, 32, 352, '2023-07-16');
 
-    INSERT INTO favourites (id, user_id, product_id, is_active)
+INSERT INTO favourites (id, user_id, product_id, is_active)
 VALUES
-  (1, 1, 12, true),
-  (2, 7, 14, true),
-  (3, 7, 15, true);
-
+  (1, 1, 19, true),
+  (2, 2, 20, true);
 
 SELECT favourites.user_id, favourites.product_id, favourites.is_active, products.name
 FROM favourites 

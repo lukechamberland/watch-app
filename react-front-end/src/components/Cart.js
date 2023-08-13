@@ -110,7 +110,15 @@ function Cart() {
   }
 
   const isCartEmpty = function() {
-    if (cartState) {
+    if (!cartState) {
+      return (
+        <>
+        <Layout>
+        <div class="empty-cart">Your cart is empty.</div>
+        </Layout>
+        </>
+      )
+    } else if (cartState.length != 0) {
       return (
         <Layout>
       <div className="cart">
@@ -123,12 +131,12 @@ function Cart() {
                 ${product.price}.00
               </div>
             </div>
-            <div id="cart-heart" className="cart-heart" onClick={(event) => {
+            {/* <div id="cart-heart" className="cart-heart" onClick={(event) => {
               event.stopPropagation()
               favProduct(product)
             }}>
               <FontAwesomeIcon icon={faHeart} />
-            </div>
+            </div> */}
             <div className="trash-can" onClick={(event) => {
               event.stopPropagation();
               removeProduct(product)
@@ -154,7 +162,6 @@ function Cart() {
         <div class="empty-cart">Your cart is empty.</div>
         </Layout>
         </>
-        
       )
     }
   }
