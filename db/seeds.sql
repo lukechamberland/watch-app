@@ -28,7 +28,7 @@ VALUES
   (5, 'https://consumer.huawei.com/content/dam/huawei-cbg-site/common/mkt/pdp/wearables/watch-3/img/id/huawei-watch-3-strap-3-1.png', 'Black Sports Watch', 'Huawei Watch 3', 230, 4, 'true', 'athletic');
 
 
-INSERT INTO order_products (product_id, quantity, order_id)
+  INSERT INTO order_products (product_id, quantity, order_id)
 VALUES
   (19, 2, 4),
   (20, 1, 5),
