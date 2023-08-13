@@ -56,7 +56,8 @@ function Slideshow() {
                   overflow: "hidden",
                   width: "100%",
                   objectFit: "cover",
-                  objectPosition: "center"
+                  objectPosition: "center",
+                  marginBottom: "20px",
                 }}
                 src={step.imgPath}
                 alt={step.label}
