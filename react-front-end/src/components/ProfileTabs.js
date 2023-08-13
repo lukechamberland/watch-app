@@ -90,10 +90,9 @@ export default function ProfileTabs() {
             <div class="product-name">{favourite.name}</div>
             <div class="price-div">
               <h1 class="price"> ${favourite.price}.00</h1>
-              <button class="favourite-delete-button" onClick={() => deleteFavourite(favourite)}>DELETE</button>
             </div>
             <div class="PDinventory">
-              <div class="in-stock">{favourite.inventory} in stock</div> <button class="add-to-cart" >ADD TO CART</button>
+              <div class="in-stock">{favourite.inventory} in stock</div> <button class="add-to-cart" onClick={() => handleClick(favourite.id)}>ADD TO CART</button>
             </div>
           </div>
         </div>
