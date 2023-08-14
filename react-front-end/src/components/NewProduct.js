@@ -17,12 +17,13 @@ function NewProduct() {
         productImage: '',
         productDescription: '',
         productName: '',
-        productPrice: 0
+        productPrice: 0, 
+        productCategory: ''
       }}
       onSubmit={
         async (values) => {
         const userId = window.sessionStorage.getItem('userId')
-        const data = await axios.post("/newproduct", [userId, values.productImage, values.productDescription, values.productName, values.productPrice, 1, true])
+        const data = await axios.post("/newproduct", [userId, values.productImage, values.productDescription, values.productName, values.productPrice, 1, true, values.productCategory])
         navigate('/profile')
         }
       }
@@ -48,6 +49,14 @@ function NewProduct() {
           id="productImage"
           name="productImage"
         />
+
+        <label htmlFor="productCategory">Product Category</label>
+        <Field class='field' as='select' id="productCategory" name="productCategory">
+          <option value="mens">Mens</option>
+          <option value="womens">Womens</option>
+          <option value="kids">Kids</option>
+          <option value='athletic'>Ahtletic</option>
+          </Field>
 
         <button class='submitbtn' type="submit">Submit</button>
 

@@ -117,6 +117,7 @@ app.post("/newproduct", (req, res) => {
       res.json(result);
     })
     .catch((error) => {
+      console.log('test server');
       res.status(500).json({ error: "Internal Server Error" });
     });
 });

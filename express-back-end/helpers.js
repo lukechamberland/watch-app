@@ -3,7 +3,7 @@ const { pool } = require("../db/connection");
 const addToProducts = function (values) {
   return new Promise((resolve, reject) => {
     const statement =
-      "INSERT INTO products (user_id, image_url, description, name, price, inventory, available) VALUES ($1, $2, $3, $4, $5, $6, $7)";
+      "INSERT INTO products (user_id, image_url, description, name, price, inventory, available, category) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)";
 
     pool
       .query(statement, values)
@@ -11,6 +11,7 @@ const addToProducts = function (values) {
         resolve(result);
       })
       .catch((err) => {
+        console.log('test helper')
         reject(err);
       });
   });
