@@ -187,13 +187,18 @@ app.get("/api/favourites", (req, res) => {
 });
 
 app.post('/create-checkout-session', async (req, res) => {
+  try {
     const products = req.body.products;
+    const GST_RATE = 0.05;
+
     const line_items = await Promise.all(products.map(async (item) => {
       const product = await pool.query('SELECT * FROM products WHERE id = $1', [item.productId]);
+      const priceWithoutGST = product.rows[0].price * 100;
+      const gstAmount = priceWithoutGST * GST_RATE;
       return {
         price_data: {
           currency: 'cad',
-          unit_amount: product.rows[0].price * 100,
+          unit_amount: priceWithoutGST + gstAmount,
           product_data: {
             name: product.rows[0].name,
           },
@@ -215,6 +220,10 @@ app.post('/create-checkout-session', async (req, res) => {
       console.error('Session URL not found', session);
       res.status(500).send('An error occurred');
     }
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('An error occurred');
+  }
 });
 
 app.listen(PORT, () => {
